@@ -12,7 +12,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-md">
-      <Container className="flex h-20 items-center justify-between">
+      <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-numeric text-lg font-bold">
           <Image
             src="/photos/genius-icon.png"
