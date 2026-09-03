@@ -4,7 +4,7 @@ export function Eyebrow({ children, className }: { children: string; className?:
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full bg-accent-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent",
+        "inline-flex items-center rounded-full border border-ink/10 bg-panel px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-ink",
         className,
       )}
     >
@@ -35,7 +35,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+      <h2 className="max-w-xl font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
         {title}
       </h2>
       {description && (

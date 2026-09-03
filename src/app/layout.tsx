@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Unbounded } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  subsets: ["latin", "cyrillic"],
+  weight: ["600", "700", "800"],
 });
 
 const inter = Inter({
@@ -31,9 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
+      className={`${unbounded.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream font-sans text-ink">
+      <body className="min-h-full flex flex-col bg-page font-sans text-ink">
         {children}
       </body>
     </html>

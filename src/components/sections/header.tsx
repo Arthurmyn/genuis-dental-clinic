@@ -1,37 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { navLinks, siteConfig } from "@/lib/site-data";
 import { Container } from "@/components/ui/container";
 import { LinkButton } from "@/components/ui/button";
+import { ToothIcon } from "@/components/icons";
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/5 bg-cream/85 backdrop-blur-md">
-      <Container className="flex items-center justify-between py-4">
-        <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-cream">
-            G
+    <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-md">
+      <Container className="flex items-center justify-between py-5">
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-panel">
+            <ToothIcon className="h-4 w-4" />
           </span>
           {siteConfig.shortName}
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-muted transition-colors hover:text-accent"
+              className="text-sm font-medium text-ink-muted transition-colors hover:text-ink"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden md:block">
-          <LinkButton href="#booking">Записаться</LinkButton>
+          <LinkButton href="/#booking">Записаться</LinkButton>
         </div>
 
         <button
@@ -47,19 +49,19 @@ export function Header() {
       </Container>
 
       {open && (
-        <div className="border-t border-ink/5 bg-cream md:hidden">
-          <Container className="flex flex-col gap-1 py-4">
+        <div className="md:hidden">
+          <Container className="flex flex-col gap-1 rounded-[1.5rem] bg-panel p-4 pb-6 shadow-lg shadow-ink/5">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-sm font-medium text-ink-muted hover:bg-accent-soft hover:text-accent"
+                className="rounded-lg px-2 py-3 text-sm font-medium text-ink-muted hover:bg-panel-alt hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <LinkButton href="#booking" className="mt-2 justify-center" onClick={() => setOpen(false)}>
+            <LinkButton href="/#booking" className="mt-2 justify-center" onClick={() => setOpen(false)}>
               Записаться
             </LinkButton>
           </Container>

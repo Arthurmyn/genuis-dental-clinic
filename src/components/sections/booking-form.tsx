@@ -38,9 +38,9 @@ export function BookingForm() {
   }
 
   return (
-    <section id="booking" className="py-20 sm:py-28">
+    <section id="booking" className="py-6">
       <Container>
-        <div className="grid gap-10 rounded-xl bg-accent-soft/70 p-6 sm:p-10 lg:grid-cols-[1fr_1.1fr] lg:p-14">
+        <div className="grid gap-10 rounded-[2rem] bg-accent p-6 sm:p-10 lg:grid-cols-[1fr_1.1fr] lg:p-14">
           <Reveal className="flex flex-col justify-center gap-4">
             <SectionHeading
               eyebrow="Запись"
@@ -52,7 +52,7 @@ export function BookingForm() {
           <Reveal delay={0.1}>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-4 rounded-lg bg-surface p-6 sm:p-8"
+              className="flex flex-col gap-4 rounded-[1.5rem] bg-panel p-6 sm:p-8"
               noValidate
             >
               <div className="flex flex-col gap-1.5">
@@ -63,7 +63,7 @@ export function BookingForm() {
                   id="name"
                   type="text"
                   autoComplete="name"
-                  className="rounded-sm border border-ink/15 bg-cream px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+                  className="rounded-sm border border-ink/15 bg-page px-4 py-2.5 text-sm outline-none transition-colors focus:border-ink"
                   placeholder="Как к вам обращаться"
                   {...register("name")}
                 />
@@ -80,7 +80,7 @@ export function BookingForm() {
                   id="phone"
                   type="tel"
                   autoComplete="tel"
-                  className="rounded-sm border border-ink/15 bg-cream px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+                  className="rounded-sm border border-ink/15 bg-page px-4 py-2.5 text-sm outline-none transition-colors focus:border-ink"
                   placeholder="+7 (___) ___-__-__"
                   {...register("phone")}
                 />
@@ -96,7 +96,7 @@ export function BookingForm() {
                 <input
                   id="preferredTime"
                   type="text"
-                  className="rounded-sm border border-ink/15 bg-cream px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+                  className="rounded-sm border border-ink/15 bg-page px-4 py-2.5 text-sm outline-none transition-colors focus:border-ink"
                   placeholder="Например, завтра после 18:00"
                   {...register("preferredTime")}
                 />
@@ -112,7 +112,7 @@ export function BookingForm() {
                 <textarea
                   id="comment"
                   rows={3}
-                  className="resize-none rounded-sm border border-ink/15 bg-cream px-4 py-2.5 text-sm outline-none transition-colors focus:border-accent"
+                  className="resize-none rounded-sm border border-ink/15 bg-page px-4 py-2.5 text-sm outline-none transition-colors focus:border-ink"
                   placeholder="Что беспокоит? (необязательно)"
                   {...register("comment")}
                 />
@@ -123,7 +123,7 @@ export function BookingForm() {
               </Button>
 
               {status === "success" && (
-                <p className="text-sm font-medium text-accent">
+                <p className="text-sm font-medium text-ink">
                   Спасибо! Мы свяжемся с вами в ближайшее время.
                 </p>
               )}

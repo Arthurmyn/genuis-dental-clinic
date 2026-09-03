@@ -1,44 +1,46 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Panel } from "@/components/ui/panel";
+import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { serviceIcons } from "@/components/icons";
+import { ServiceCard } from "@/components/service-card";
 import { services } from "@/lib/site-data";
 
 export function Services() {
-  return (
-    <section id="services" className="py-20 sm:py-28">
-      <Container className="flex flex-col gap-12">
-        <SectionHeading
-          eyebrow="Услуги"
-          title="Всё, что нужно вашей улыбке"
-          description="От профилактики до сложной имплантации — полный цикл лечения под одной крышей."
-        />
+  const featured = services.slice(0, 4);
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => {
-            const Icon = serviceIcons[service.icon];
-            return (
-              <Reveal key={service.title} delay={(i % 4) * 0.06}>
-                <div className="group flex h-full flex-col gap-4 rounded-md border border-ink/8 bg-surface p-6 transition-colors hover:border-accent/40">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent transition-colors group-hover:bg-accent group-hover:text-cream">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <h3 className="font-display text-lg font-semibold leading-snug">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-ink-muted">
-                      {service.description}
-                    </p>
-                  </div>
-                  <p className="mt-auto pt-2 text-sm font-semibold text-accent">
-                    от {service.priceFrom.toLocaleString("ru-RU")} ₽
-                  </p>
-                </div>
+  return (
+    <section id="services" className="py-6">
+      <Container>
+        <Panel className="flex flex-col gap-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-4">
+              <Eyebrow>Услуги</Eyebrow>
+              <h2 className="max-w-md font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+                Стоматологические услуги на любой случай
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4 lg:max-w-xs">
+              <p className="text-sm leading-relaxed text-ink-muted">
+                От профилактики до сложной имплантации — полный цикл лечения под одной крышей.
+              </p>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center self-start rounded-full bg-ink px-6 py-3 text-sm font-semibold text-panel transition-colors hover:bg-ink/85"
+              >
+                Все услуги
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featured.map((service, i) => (
+              <Reveal key={service.slug} delay={(i % 4) * 0.06} className="min-w-0">
+                <ServiceCard service={service} />
               </Reveal>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        </Panel>
       </Container>
     </section>
   );
