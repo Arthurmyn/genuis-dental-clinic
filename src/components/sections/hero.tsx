@@ -9,24 +9,26 @@ import { siteConfig } from "@/lib/site-data";
 
 export function Hero() {
   return (
-    <section id="top" className="flex min-h-[calc(100vh-4rem)] flex-col py-3">
+    <section id="top" className="flex min-h-[calc(100vh-4.5rem)] flex-col py-3">
       <Container padding="narrow" className="flex flex-1">
-        <Panel className="flex flex-1 flex-col justify-center">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <Reveal className="flex flex-col gap-5">
-              <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
-                Здоровая улыбка
-                <br />
-                начинается с
-                <br />
-                заботливой команды
-              </h1>
-              <p className="max-w-md text-base leading-relaxed text-ink-muted">
-                Диагностика, лечение и эстетическая стоматология в одной клинике.
-                Современное оборудование, прозрачные цены и врачи, которым доверяют.
-              </p>
+        <Panel padding="tight" className="flex flex-1">
+          <div className="grid flex-1 gap-8 lg:grid-cols-2">
+            <Reveal className="flex flex-col justify-between gap-8">
+              <div className="flex flex-col gap-5">
+                <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
+                  Здоровая улыбка
+                  <br />
+                  начинается с
+                  <br />
+                  заботливой команды
+                </h1>
+                <p className="max-w-md text-base leading-relaxed text-ink-muted">
+                  Диагностика, лечение и эстетическая стоматология в одной клинике.
+                  Современное оборудование, прозрачные цены и врачи, которым доверяют.
+                </p>
+              </div>
 
-              <div className="grid grid-cols-1 gap-3 pt-6 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="flex h-full flex-col gap-3">
                   <div className="flex flex-1 flex-col gap-3 rounded-[1.5rem] bg-panel-alt p-5">
                     <p className="text-sm font-semibold">Часы работы</p>
@@ -58,8 +60,8 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.1} className="min-h-[30rem]">
-              <div className="relative h-full min-h-[30rem] w-full overflow-hidden rounded-[1.5rem]">
+            <Reveal delay={0.1} className="aspect-[4/5] lg:aspect-auto lg:h-full">
+              <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
                 <Image
                   src="/photos/man-hero.jpg"
                   alt="Пациент клиники со здоровой улыбкой"

@@ -12,7 +12,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
+      <Container className="flex h-[4.5rem] items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-numeric text-lg font-bold">
           <Image
             src="/photos/genius-icon.png"
@@ -38,9 +38,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <LinkButton href="/#booking" size="lg">
-            Записаться
-          </LinkButton>
+          <LinkButton href="/#booking">Записаться</LinkButton>
         </div>
 
         <button
@@ -68,7 +66,7 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <LinkButton href="/#booking" size="lg" className="mt-2 justify-center" onClick={() => setOpen(false)}>
+            <LinkButton href="/#booking" className="mt-2 justify-center" onClick={() => setOpen(false)}>
               Записаться
             </LinkButton>
           </Container>
