@@ -26,7 +26,7 @@ export function LiveClock() {
     <div className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-panel px-5 py-3 text-sm">
       <span className="text-ink-muted">Сегодня</span>
       <span className="font-semibold text-ink" suppressHydrationWarning>
-        {WEEKDAYS[now.getDay()]}, {time}
+        {WEEKDAYS[now.getDay()]}, <span className="font-numeric">{time}</span>
       </span>
     </div>
   );

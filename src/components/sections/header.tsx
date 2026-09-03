@@ -12,8 +12,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-md">
-      <Container className="flex items-center justify-between py-5">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
+      <Container className="flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 font-numeric text-lg font-bold">
           <Image
             src="/photos/genius-icon.png"
             alt=""
@@ -30,7 +30,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-base font-medium text-ink-muted transition-colors hover:text-ink"
+              className="font-ui text-base text-ink-muted transition-colors hover:text-ink"
             >
               {link.label}
             </Link>
@@ -63,7 +63,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-base font-medium text-ink-muted hover:bg-panel-alt hover:text-ink"
+                className="rounded-lg px-2 py-3 font-ui text-base text-ink-muted hover:bg-panel-alt hover:text-ink"
               >
                 {link.label}
               </Link>

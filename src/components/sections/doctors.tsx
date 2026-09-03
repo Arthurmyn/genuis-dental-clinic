@@ -39,7 +39,7 @@ export function Doctors() {
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    "rounded-full px-4 py-2 font-ui text-sm font-bold transition-colors",
                     active === tab.key
                       ? "bg-ink text-panel"
                       : "bg-panel-alt text-ink-muted hover:text-ink",
@@ -63,7 +63,7 @@ export function Doctors() {
                   <h3 className="font-display text-base font-bold">{doctor.name}</h3>
                   <p className="text-sm text-ink-muted">{doctor.role}</p>
                   <p className="mt-1 text-xs font-semibold text-ink-muted">
-                    Опыт {doctor.experienceYears} лет
+                    Опыт <span className="font-numeric">{doctor.experienceYears}</span> лет
                   </p>
                 </div>
               </Reveal>

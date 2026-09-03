@@ -35,7 +35,7 @@ export function Pricing() {
                       className="flex items-baseline justify-between gap-4 py-3"
                     >
                       <span className="text-sm text-ink-muted">{item.name}</span>
-                      <span className="whitespace-nowrap font-semibold">
+                      <span className="whitespace-nowrap font-numeric font-bold">
                         {item.price.toLocaleString("ru-RU")} ₸
                       </span>
                     </li>

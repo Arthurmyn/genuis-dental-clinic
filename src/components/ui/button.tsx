@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
-const base = "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-200 whitespace-nowrap";
+const base = "inline-flex items-center justify-center gap-2 rounded-full font-ui font-bold transition-colors duration-200 whitespace-nowrap";
 
 const variants = {
   primary: "bg-ink text-panel hover:bg-ink/85",

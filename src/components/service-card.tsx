@@ -34,12 +34,12 @@ export function ServiceCard({ service, badgeClassName }: { service: Service; bad
       </ul>
 
       <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-        <span className="text-sm font-semibold">
+        <span className="font-numeric text-sm font-bold">
           от {service.priceFrom.toLocaleString("ru-RU")} ₸
         </span>
         <Link
           href="/#booking"
-          className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-panel transition-colors hover:bg-ink/85"
+          className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 font-ui text-xs font-bold text-panel transition-colors hover:bg-ink/85"
         >
           Записаться
           <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />

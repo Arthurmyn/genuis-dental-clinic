@@ -36,7 +36,7 @@ export function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-sm text-ink-muted hover:text-ink"
+                    className="font-ui text-sm text-ink-muted hover:text-ink"
                   >
                     {link.label}
                   </Link>
@@ -46,12 +46,15 @@ export function Footer() {
 
             <div className="flex flex-col gap-3">
               <p className="text-sm font-semibold">Контакты</p>
-              <a href={siteConfig.phoneHref} className="text-sm text-ink-muted hover:text-ink">
+              <a
+                href={siteConfig.phoneHref}
+                className="font-numeric text-sm text-ink-muted hover:text-ink"
+              >
                 {siteConfig.phone}
               </a>
               <a
                 href={siteConfig.phoneSecondaryHref}
-                className="text-sm text-ink-muted hover:text-ink"
+                className="font-numeric text-sm text-ink-muted hover:text-ink"
               >
                 {siteConfig.phoneSecondary}
               </a>
@@ -68,7 +71,7 @@ export function Footer() {
                   <a
                     key={link.label}
                     href={link.href}
-                    className="text-sm text-ink-muted hover:text-ink"
+                    className="font-ui text-sm text-ink-muted hover:text-ink"
                   >
                     {link.label}
                   </a>

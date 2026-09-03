@@ -30,8 +30,10 @@
   --radius-md: var(--radius-md);
   --radius-sm: var(--radius-sm);
 
-  --font-display: var(--font-rubik);
+  --font-display: var(--font-manrope);
   --font-sans: var(--font-inter);
+  --font-ui: var(--font-pt-sans);
+  --font-numeric: var(--font-space-grotesk);
 }
 
 html {

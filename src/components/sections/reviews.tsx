@@ -19,9 +19,9 @@ export function Reviews() {
               </h2>
               <div className="flex items-center gap-2 rounded-full bg-panel-alt px-4 py-2 text-sm">
                 <StarIcon className="h-4 w-4 text-ink" />
-                <span className="font-semibold">{siteConfig.rating.toFixed(1)}</span>
+                <span className="font-numeric font-bold">{siteConfig.rating.toFixed(1)}</span>
                 <span className="text-ink-muted">
-                  · {siteConfig.reviewCount} отзывов на 2ГИС
+                  · <span className="font-numeric">{siteConfig.reviewCount}</span> отзывов на 2ГИС
                 </span>
               </div>
             </div>
@@ -48,7 +48,9 @@ export function Reviews() {
                     <p className="text-sm font-semibold">{review.name}</p>
                     <div className="flex items-center gap-1 text-ink-muted">
                       <StarIcon className="h-3.5 w-3.5 text-ink" />
-                      <span className="text-xs font-medium">{review.rating.toFixed(1)}</span>
+                      <span className="font-numeric text-xs font-bold">
+                        {review.rating.toFixed(1)}
+                      </span>
                     </div>
                   </div>
                 </div>

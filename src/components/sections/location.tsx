@@ -53,7 +53,10 @@ export function Location() {
                 </span>
                 <div>
                   <p className="text-sm font-semibold">Телефон</p>
-                  <a href={siteConfig.phoneHref} className="text-sm text-ink-muted hover:text-ink">
+                  <a
+                    href={siteConfig.phoneHref}
+                    className="font-numeric text-sm text-ink-muted hover:text-ink"
+                  >
                     {siteConfig.phone}
                   </a>
                 </div>

@@ -9,8 +9,8 @@ import { siteConfig } from "@/lib/site-data";
 
 export function Hero() {
   return (
-    <section id="top" className="pt-2 sm:pt-3">
-      <Container>
+    <section id="top" className="flex min-h-[calc(100vh-5rem)] flex-col justify-center py-4">
+      <Container padding="narrow">
         <Panel className="grid gap-8 lg:grid-cols-2">
           <Reveal className="flex flex-col gap-5">
             <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
