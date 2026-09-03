@@ -35,7 +35,7 @@ export function ServiceCard({ service, badgeClassName }: { service: Service; bad
 
       <div className="mt-auto flex items-center justify-between gap-3 pt-2">
         <span className="text-sm font-semibold">
-          от {service.priceFrom.toLocaleString("ru-RU")} ₽
+          от {service.priceFrom.toLocaleString("ru-RU")} ₸
         </span>
         <Link
           href="/#booking"

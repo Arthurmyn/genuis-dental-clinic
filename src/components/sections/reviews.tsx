@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { StarIcon } from "@/components/icons";
-import { reviews } from "@/lib/site-data";
+import { reviews, siteConfig } from "@/lib/site-data";
 
 export function Reviews() {
   return (
@@ -13,12 +13,20 @@ export function Reviews() {
         <Panel className="flex flex-col gap-12">
           <div className="flex flex-col gap-4">
             <Eyebrow>Отзывы</Eyebrow>
-            <h2 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-              Что говорят пациенты
-            </h2>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+                Что говорят пациенты
+              </h2>
+              <div className="flex items-center gap-2 rounded-full bg-panel-alt px-4 py-2 text-sm">
+                <StarIcon className="h-4 w-4 text-ink" />
+                <span className="font-semibold">{siteConfig.rating.toFixed(1)}</span>
+                <span className="text-ink-muted">
+                  · {siteConfig.reviewCount} отзывов на 2ГИС
+                </span>
+              </div>
+            </div>
             <p className="max-w-lg text-sm text-ink-muted">
-              Позже здесь можно подключить живой виджет отзывов Google или 2ГИС.
-              {/* TODO: подключить виджет */}
+              Ниже — примеры отзывов. {/* TODO: подключить живой виджет отзывов 2ГИС */}
             </p>
           </div>
 

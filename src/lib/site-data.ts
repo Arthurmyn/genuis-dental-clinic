@@ -1,26 +1,33 @@
 // Content shown across the landing page.
 // TODO: replace every placeholder value below with the clinic's real data.
 
+// Данные ниже взяты с карточки клиники на 2ГИС (https://go.2gis.com/YHWSl)
+// и профиля Instagram @genius_stom. Полное расписание по дням, email,
+// стаж врачей и юр. реквизиты 2ГИС не показывает — уточните напрямую и
+// замените отмеченные TODO.
 export const siteConfig = {
-  name: "Genius Dental Clinic", // TODO: подтвердить финальное название клиники
+  name: "Genius Dental Clinic",
   shortName: "Genius",
   tagline: "Стоматология нового поколения",
-  phone: "+7 (999) 000-00-00", // TODO
-  phoneHref: "tel:+79990000000", // TODO
-  email: "info@genius-dental.ru", // TODO
-  address: "г. Москва, ул. Примерная, д. 1", // TODO
-  workHoursWeekdays: "9:00 – 21:00", // TODO
-  workHoursWeekend: "10:00 – 18:00", // TODO
+  phone: "+7 775 507 77 63",
+  phoneHref: "tel:+77755077763",
+  phoneSecondary: "+7 700 434 95 54",
+  phoneSecondaryHref: "tel:+77004349554",
+  email: "info@genius-stom.kz", // TODO: подтвердить адрес почты
+  address: "Казахстан, г. Астана, ул. Толе би, 55",
+  workHoursWeekdays: "10:00 – 20:00", // TODO: уточнить точное расписание по дням
+  workHoursWeekend: "10:00 – 20:00", // TODO: уточнить точное расписание по дням
   mapEmbedSrc:
-    "https://www.google.com/maps?q=Moscow&output=embed", // TODO: заменить на embed с точным адресом клиники
+    "https://www.google.com/maps?q=Астана,+улица+Толе+би+55&output=embed",
+  rating: 5,
+  reviewCount: 212, // по данным 2ГИС на момент сбора данных
   social: {
-    instagram: "#", // TODO
-    whatsapp: "#", // TODO
-    telegram: "#", // TODO
-    vk: "#", // TODO
+    instagram: "https://www.instagram.com/genius_stom/",
+    whatsapp: "https://wa.me/77755077763",
+    telegram: "https://t.me/+77755077763", // TODO: подтвердить точный юзернейм в Telegram
   },
-  license: "Лицензия № ЛО-00-00-000000 от 00.00.0000", // TODO
-  requisites: "ООО «Гениус», ИНН 0000000000, ОГРН 0000000000000", // TODO
+  license: "Лицензия № KZ00LAA00000000 от 00.00.0000", // TODO
+  requisites: "ТОО «Genius», БИН 000000000000", // TODO
 };
 
 export const navLinks = [
@@ -185,13 +192,14 @@ export type Doctor = {
   photo?: string;
 };
 
+// Имена — из хайлайтов Instagram @genius_stom. Специализация и стаж
+// там не указаны, поэтому распределены ориентировочно — TODO: уточнить.
 export const doctors: Doctor[] = [
-  { name: "Имя Фамилия", role: "Стоматолог-терапевт", category: "therapists", experienceYears: 12 }, // TODO
-  { name: "Имя Фамилия", role: "Хирург-имплантолог", category: "surgeons", experienceYears: 15 }, // TODO
-  { name: "Имя Фамилия", role: "Ортодонт", category: "orthodontists", experienceYears: 9 }, // TODO
-  { name: "Имя Фамилия", role: "Детский стоматолог", category: "kids", experienceYears: 7 }, // TODO
-  { name: "Имя Фамилия", role: "Стоматолог-терапевт", category: "therapists", experienceYears: 8 }, // TODO
-  { name: "Имя Фамилия", role: "Хирург-имплантолог", category: "surgeons", experienceYears: 11 }, // TODO
+  { name: "Нурбек", role: "Хирург-имплантолог", category: "surgeons", experienceYears: 10 }, // TODO: уточнить специализацию и стаж
+  { name: "Данияр", role: "Стоматолог-терапевт", category: "therapists", experienceYears: 8 }, // TODO: уточнить специализацию и стаж
+  { name: "Диляра", role: "Ортодонт", category: "orthodontists", experienceYears: 7 }, // TODO: уточнить специализацию и стаж
+  { name: "Молдир", role: "Детский стоматолог", category: "kids", experienceYears: 6 }, // TODO: уточнить специализацию и стаж
+  { name: "Султан", role: "Хирург-имплантолог", category: "surgeons", experienceYears: 9 }, // TODO: уточнить специализацию и стаж
 ];
 
 export type Review = {
@@ -207,7 +215,7 @@ export const reviews: Review[] = [
     name: "Имя Клиента", // TODO
     rating: 5,
     date: "2026", // TODO
-    source: "Google",
+    source: "2ГИС",
     text: "Отличная клиника, внимательный персонал, всё объяснили перед лечением. Очень довольна результатом.", // TODO
   },
   {
@@ -221,7 +229,7 @@ export const reviews: Review[] = [
     name: "Имя Клиента", // TODO
     rating: 4.8,
     date: "2026", // TODO
-    source: "Google",
+    source: "2ГИС",
     text: "Ребёнок первый раз не боялся стоматолога. Спасибо за терпение и заботу!", // TODO
   },
 ];

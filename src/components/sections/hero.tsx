@@ -26,16 +26,18 @@ export function Hero() {
             </p>
 
             <div className="grid grid-cols-1 gap-3 pt-6 sm:grid-cols-2">
-              <div className="flex h-full flex-col gap-3 rounded-[1.5rem] bg-panel-alt p-5">
-                <p className="text-sm font-semibold">Часы работы</p>
-                <div className="flex flex-col gap-1.5 text-sm text-ink-muted">
-                  <div className="flex justify-between gap-4">
-                    <span>Пн – Пт</span>
-                    <span>{siteConfig.workHoursWeekdays}</span>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <span>Сб, Вс</span>
-                    <span>{siteConfig.workHoursWeekend}</span>
+              <div className="flex h-full flex-col gap-3">
+                <div className="flex flex-1 flex-col gap-3 rounded-[1.5rem] bg-panel-alt p-5">
+                  <p className="text-sm font-semibold">Часы работы</p>
+                  <div className="flex flex-col gap-1.5 text-sm text-ink-muted">
+                    <div className="flex justify-between gap-4">
+                      <span>Пн – Пт</span>
+                      <span>{siteConfig.workHoursWeekdays}</span>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <span>Сб, Вс</span>
+                      <span>{siteConfig.workHoursWeekend}</span>
+                    </div>
                   </div>
                 </div>
                 <LiveClock />

@@ -36,7 +36,7 @@ export function Pricing() {
                     >
                       <span className="text-sm text-ink-muted">{item.name}</span>
                       <span className="whitespace-nowrap font-semibold">
-                        {item.price.toLocaleString("ru-RU")} ₽
+                        {item.price.toLocaleString("ru-RU")} ₸
                       </span>
                     </li>
                   ))}

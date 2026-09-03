@@ -8,7 +8,6 @@ const socialLinks = [
   { label: "Instagram", href: siteConfig.social.instagram },
   { label: "WhatsApp", href: siteConfig.social.whatsapp },
   { label: "Telegram", href: siteConfig.social.telegram },
-  { label: "VK", href: siteConfig.social.vk },
 ];
 
 export function Footer() {
@@ -49,6 +48,12 @@ export function Footer() {
               <p className="text-sm font-semibold">Контакты</p>
               <a href={siteConfig.phoneHref} className="text-sm text-ink-muted hover:text-ink">
                 {siteConfig.phone}
+              </a>
+              <a
+                href={siteConfig.phoneSecondaryHref}
+                className="text-sm text-ink-muted hover:text-ink"
+              >
+                {siteConfig.phoneSecondary}
               </a>
               <a href={`mailto:${siteConfig.email}`} className="text-sm text-ink-muted hover:text-ink">
                 {siteConfig.email}
