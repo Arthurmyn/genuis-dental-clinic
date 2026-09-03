@@ -15,7 +15,7 @@ export function Hero() {
           <div className="grid flex-1 gap-8 lg:grid-cols-2">
             <Reveal className="flex flex-col justify-between gap-8">
               <div className="flex flex-col gap-5">
-                <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
+                <h1 className="font-display text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[3.75rem]">
                   Здоровая улыбка
                   <br />
                   начинается с

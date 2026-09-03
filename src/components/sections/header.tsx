@@ -25,12 +25,12 @@ export function Header() {
           {siteConfig.shortName}
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-11 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-ui text-base text-ink-muted transition-colors hover:text-ink"
+              className="font-ui text-lg text-ink-muted transition-colors hover:text-ink"
             >
               {link.label}
             </Link>
@@ -38,7 +38,9 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <LinkButton href="/#booking">Записаться</LinkButton>
+          <LinkButton href="/#booking" size="lg">
+            Записаться на приём
+          </LinkButton>
         </div>
 
         <button
@@ -61,13 +63,18 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 font-ui text-base text-ink-muted hover:bg-panel-alt hover:text-ink"
+                className="rounded-lg px-2 py-3 font-ui text-lg text-ink-muted hover:bg-panel-alt hover:text-ink"
               >
                 {link.label}
               </Link>
             ))}
-            <LinkButton href="/#booking" className="mt-2 justify-center" onClick={() => setOpen(false)}>
-              Записаться
+            <LinkButton
+              href="/#booking"
+              size="lg"
+              className="mt-2 justify-center"
+              onClick={() => setOpen(false)}
+            >
+              Записаться на приём
             </LinkButton>
           </Container>
         </div>
