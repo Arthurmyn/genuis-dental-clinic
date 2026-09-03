@@ -10,8 +10,8 @@ import { siteConfig } from "@/lib/site-data";
 export function Hero() {
   return (
     <section id="top" className="flex min-h-[calc(100vh-4rem)] flex-col py-3">
-      <Container padding="narrow" className="flex-1">
-        <Panel className="flex h-full flex-col justify-center">
+      <Container padding="narrow" className="flex flex-1">
+        <Panel className="flex flex-1 flex-col justify-center">
           <div className="grid gap-8 lg:grid-cols-2">
             <Reveal className="flex flex-col gap-5">
               <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
