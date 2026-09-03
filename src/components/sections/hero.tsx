@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section id="top" className="pt-2 sm:pt-3">
       <Container>
-        <Panel padding="tight" className="grid gap-8 lg:grid-cols-2">
+        <Panel className="grid gap-8 lg:grid-cols-2">
           <Reveal className="flex flex-col gap-5">
             <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3rem]">
               Здоровая улыбка
@@ -57,11 +57,11 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="min-h-[22rem]">
-            <div className="relative h-full min-h-[22rem] w-full overflow-hidden rounded-[1.5rem]">
+          <Reveal delay={0.1} className="min-h-[30rem]">
+            <div className="relative h-full min-h-[30rem] w-full overflow-hidden rounded-[1.5rem]">
               <Image
-                src="/photos/woman-hero.jpg"
-                alt="Пациентка клиники со здоровой улыбкой"
+                src="/photos/man-hero.jpg"
+                alt="Пациент клиники со здоровой улыбкой"
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 100vw"

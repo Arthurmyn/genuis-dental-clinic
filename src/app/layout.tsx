@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Unbounded } from "next/font/google";
+import { Inter, Rubik } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
 import "./globals.css";
 
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
+const rubik = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin", "cyrillic"],
   weight: ["600", "700", "800"],
 });
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={`${unbounded.variable} ${inter.variable} h-full antialiased`}
+      className={`${rubik.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page font-sans text-ink">
         {children}
