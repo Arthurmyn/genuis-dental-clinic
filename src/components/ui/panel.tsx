@@ -9,7 +9,7 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-[2rem] bg-panel p-6 sm:p-10 lg:p-14", className)}>
+    <div className={cn("rounded-[2rem] bg-panel p-6 sm:p-10 lg:p-14 xl:p-16", className)}>
       {children}
     </div>
   );
