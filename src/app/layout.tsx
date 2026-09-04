@@ -93,7 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ru"
       className={`${manrope.variable} ${inter.variable} ${ptSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-page font-sans text-ink">
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-page font-sans text-ink">
         <StructuredData />
         {children}
         <BookingModal />

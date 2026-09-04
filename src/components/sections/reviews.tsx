@@ -14,7 +14,7 @@ export function Reviews() {
           <div className="flex flex-col gap-4">
             <Eyebrow>Отзывы</Eyebrow>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+              <h2 className="max-w-lg font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
                 Что говорят пациенты
               </h2>
               <div className="flex items-center gap-2 rounded-full bg-panel-alt px-4 py-2 text-sm">

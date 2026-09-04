@@ -26,7 +26,7 @@ export function Header() {
           {siteConfig.shortName}
         </Link>
 
-        <nav className="hidden items-center gap-11 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex xl:gap-11">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -38,14 +38,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button onClick={openBookingModal} size="lg">
             Записаться на приём
           </Button>
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 lg:hidden"
           onClick={() => setOpen((o) => !o)}
           aria-label="Открыть меню"
           aria-expanded={open}
@@ -57,7 +57,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Container className="flex flex-col gap-1 rounded-[1.5rem] bg-panel p-4 pb-6 shadow-lg shadow-ink/5">
             {navLinks.map((link) => (
               <Link

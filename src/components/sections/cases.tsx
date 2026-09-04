@@ -12,7 +12,7 @@ export function Cases() {
         <Panel className="flex flex-col gap-12">
           <div className="flex flex-col gap-4">
             <Eyebrow>Наши работы</Eyebrow>
-            <h2 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="max-w-lg font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               Результаты, а не обещания
             </h2>
             <p className="max-w-lg text-sm text-ink-muted">
