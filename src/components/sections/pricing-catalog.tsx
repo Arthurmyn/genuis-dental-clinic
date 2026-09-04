@@ -9,7 +9,7 @@ import { pricing } from "@/lib/site-data";
 
 export function PricingCatalog() {
   return (
-    <Panel className="flex flex-col gap-16">
+    <Panel padding="tight" className="flex flex-col gap-10 sm:gap-12">
       <Link
         href="/"
         className="inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-ink-muted transition-colors hover:text-ink"

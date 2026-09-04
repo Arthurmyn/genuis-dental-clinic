@@ -29,7 +29,7 @@ export default function PricingPage() {
     <>
       <Header />
       <main className="flex-1">
-        <section className="pt-2 sm:pt-4">
+        <section className="pt-0 sm:pt-2">
           <Container>
             <PricingCatalog />
           </Container>
