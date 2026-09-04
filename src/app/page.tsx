@@ -22,8 +22,8 @@ export default function Home() {
         <Reviews />
         <Pricing />
         <About />
-        <Location />
         <BookingForm />
+        <Location />
       </main>
       <Footer />
     </>

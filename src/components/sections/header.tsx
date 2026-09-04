@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinks, siteConfig } from "@/lib/site-data";
 import { Container } from "@/components/ui/container";
-import { LinkButton } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { openBookingModal } from "@/lib/booking-modal";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -38,9 +39,9 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <LinkButton href="/#booking" size="lg">
+          <Button onClick={openBookingModal} size="lg">
             Записаться на приём
-          </LinkButton>
+          </Button>
         </div>
 
         <button
@@ -68,14 +69,16 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <LinkButton
-              href="/#booking"
+            <Button
               size="lg"
               className="mt-2 justify-center"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                openBookingModal();
+              }}
             >
               Записаться на приём
-            </LinkButton>
+            </Button>
           </Container>
         </div>
       )}

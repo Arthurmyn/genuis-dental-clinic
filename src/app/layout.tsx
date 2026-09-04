@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, PT_Sans, Space_Grotesk } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
+import { BookingModal } from "@/components/booking-modal";
 import "./globals.css";
 
 // Headings — soft, rounded geometric sans, supports Cyrillic.
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-page font-sans text-ink">
         {children}
+        <BookingModal />
       </body>
     </html>
   );

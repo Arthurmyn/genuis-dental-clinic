@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { BookingTrigger } from "@/components/ui/booking-trigger";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
@@ -35,7 +35,7 @@ export function Pricing() {
                       className="flex items-baseline justify-between gap-4 py-3"
                     >
                       <span className="text-sm text-ink-muted">{item.name}</span>
-                      <span className="whitespace-nowrap font-numeric font-bold">
+                      <span className="whitespace-nowrap font-numeric text-lg font-bold sm:text-xl">
                         {item.price.toLocaleString("ru-RU")} ₸
                       </span>
                     </li>
@@ -47,9 +47,9 @@ export function Pricing() {
 
           <p className="text-center text-sm text-ink-muted">
             Полный прайс-лист можно уточнить у администратора клиники.{" "}
-            <Link href="/#booking" className="font-semibold text-ink underline underline-offset-4">
+            <BookingTrigger className="font-semibold text-ink underline underline-offset-4">
               Записаться на консультацию
-            </Link>
+            </BookingTrigger>
           </p>
         </Panel>
       </Container>

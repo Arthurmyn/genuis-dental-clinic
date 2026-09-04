@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { BookingTrigger } from "@/components/ui/booking-trigger";
 import { serviceIcons, CheckIcon, ArrowUpRightIcon } from "@/components/icons";
 import { cn } from "@/lib/cn";
 import type { Service } from "@/lib/site-data";
@@ -34,13 +34,10 @@ export function ServiceCard({ service, badgeClassName }: { service: Service; bad
       </ul>
 
       <div className="mt-auto pt-2">
-        <Link
-          href="/#booking"
-          className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 font-ui text-xs font-bold text-panel transition-colors hover:bg-ink/85"
-        >
+        <BookingTrigger className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 font-ui text-xs font-bold text-panel transition-colors hover:bg-ink/85">
           Записаться
           <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />
-        </Link>
+        </BookingTrigger>
       </div>
     </div>
   );

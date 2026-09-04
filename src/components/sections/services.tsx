@@ -26,7 +26,7 @@ export function Services() {
               </p>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center self-start rounded-full bg-ink px-8 py-4 font-ui text-base font-bold text-panel transition-colors hover:bg-ink/85"
+                className="inline-flex items-center justify-center self-start rounded-full bg-ink px-12 py-2.5 font-ui text-base font-bold text-panel transition-colors hover:bg-ink/85"
               >
                 Все услуги
               </Link>

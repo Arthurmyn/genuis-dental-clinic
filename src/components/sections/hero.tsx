@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { LiveClock } from "@/components/ui/live-clock";
 import { Reveal } from "@/components/ui/reveal";
+import { BookingTrigger } from "@/components/ui/booking-trigger";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { siteConfig } from "@/lib/site-data";
 
@@ -46,17 +46,14 @@ export function Hero() {
                   <LiveClock />
                 </div>
 
-                <Link
-                  href="/#booking"
-                  className="group relative flex h-full min-h-[10rem] flex-col justify-between rounded-[1.5rem] bg-accent p-5 transition-transform hover:-translate-y-0.5"
-                >
+                <BookingTrigger className="group relative flex h-full min-h-[10rem] w-full flex-col items-start justify-between rounded-[1.5rem] bg-accent p-5 text-left transition-transform hover:-translate-y-0.5">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-panel text-ink transition-transform group-hover:rotate-45">
                     <ArrowUpRightIcon className="h-5 w-5" />
                   </span>
                   <span className="font-display text-xl font-bold leading-snug">
                     Записаться на приём
                   </span>
-                </Link>
+                </BookingTrigger>
               </div>
             </Reveal>
 
