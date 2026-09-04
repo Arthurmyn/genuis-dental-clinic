@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
+import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { cn } from "@/lib/cn";
@@ -27,9 +28,7 @@ export function Doctors() {
         <Panel className="flex flex-col gap-12">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
-              <span className="inline-flex w-fit items-center rounded-full border border-ink/10 bg-panel px-5 py-2 font-ui text-base font-bold uppercase tracking-wide text-ink sm:text-lg">
-                Наша команда
-              </span>
+              <Eyebrow>Наша команда</Eyebrow>
               <h2 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
                 Врачи, которым доверяют
               </h2>
@@ -53,7 +52,7 @@ export function Doctors() {
             </div>
           </div>
 
-          <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 sm:-mx-10 sm:px-10 lg:-mx-14 lg:px-14">
+          <div className="no-scrollbar touch-pan-x -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-10 pb-2 scroll-pl-10 sm:-mx-10 sm:px-14 sm:scroll-pl-14 lg:-mx-14 lg:px-18 lg:scroll-pl-18">
             {filtered.map((doctor, i) => (
               <Reveal
                 key={doctor.name + i}

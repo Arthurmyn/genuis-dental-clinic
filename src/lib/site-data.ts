@@ -45,7 +45,7 @@ export const siteConfig = {
 export const navLinks = [
   { href: "/services", label: "Услуги" },
   { href: "/#doctors", label: "Наша команда" },
-  { href: "/#pricing", label: "Цены" },
+  { href: "/pricing", label: "Цены" },
   { href: "/#about", label: "О клинике" },
   { href: "/#contacts", label: "Контакты" },
 ];
