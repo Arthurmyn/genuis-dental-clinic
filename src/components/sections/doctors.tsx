@@ -8,12 +8,13 @@ import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { cn } from "@/lib/cn";
 import { doctorCategoryLabels, doctors, type DoctorCategory } from "@/lib/site-data";
 
+const presentCategories = new Set(doctors.map((d) => d.category));
+
 const tabs: { key: DoctorCategory | "all"; label: string }[] = [
   { key: "all", label: "Все врачи" },
-  ...(Object.entries(doctorCategoryLabels) as [DoctorCategory, string][]).map(([key, label]) => ({
-    key,
-    label,
-  })),
+  ...(Object.entries(doctorCategoryLabels) as [DoctorCategory, string][])
+    .filter(([key]) => presentCategories.has(key))
+    .map(([key, label]) => ({ key, label })),
 ];
 
 export function Doctors() {
@@ -61,7 +62,8 @@ export function Doctors() {
               >
                 <div className="flex flex-col gap-4">
                   <PhotoPlaceholder
-                    label={`портрет врача — ${doctor.role.toLowerCase()}`}
+                    src={doctor.photo}
+                    label={`${doctor.name}, ${doctor.role.toLowerCase()}`}
                     className="aspect-[3/4] w-full rounded-[1.25rem]"
                     rounded="rounded-[1.25rem]"
                   />

@@ -26,7 +26,7 @@ export function Reviews() {
               </div>
             </div>
             <p className="max-w-lg text-sm text-ink-muted">
-              Ниже — примеры отзывов. {/* TODO: подключить живой виджет отзывов 2ГИС */}
+              Реальные отзывы пациентов клиники с 2ГИС.
             </p>
           </div>
 
@@ -61,6 +61,15 @@ export function Reviews() {
               </Reveal>
             ))}
           </div>
+
+          <a
+            href={`${siteConfig.twoGisFirmUrl}/tab/reviews`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-ui text-sm font-bold text-panel transition-colors hover:bg-ink/85"
+          >
+            Посмотреть все отзывы на 2ГИС
+          </a>
         </Panel>
       </Container>
     </section>

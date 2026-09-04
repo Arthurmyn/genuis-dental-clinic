@@ -49,7 +49,7 @@ export function ServicesCatalog() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {filtered.map((service, i) => (
           <Reveal key={service.slug} delay={(i % 6) * 0.05} className="min-w-0">
             <ServiceCard service={service} />
