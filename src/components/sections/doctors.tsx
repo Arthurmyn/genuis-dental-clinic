@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/ui/reveal";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { cn } from "@/lib/cn";
 import { doctorCategoryLabels, doctors, type DoctorCategory } from "@/lib/site-data";
@@ -30,6 +29,11 @@ export function Doctors() {
     row.scrollBy({ left: direction * row.clientWidth * 0.9, behavior: "smooth" });
   }
 
+  function selectCategory(category: DoctorCategory | "all") {
+    setActive(category);
+    rowRef.current?.scrollTo({ left: 0 });
+  }
+
   return (
     <section id="doctors" className="py-6">
       <Container>
@@ -45,7 +49,7 @@ export function Doctors() {
               {tabs.map((tab) => (
                 <button
                   key={tab.key}
-                  onClick={() => setActive(tab.key)}
+                  onClick={() => selectCategory(tab.key)}
                   className={cn(
                     "rounded-full px-4 py-2 font-ui text-sm font-bold transition-colors",
                     active === tab.key
@@ -73,13 +77,12 @@ export function Doctors() {
 
             <div
               ref={rowRef}
-              className="no-scrollbar -mx-6 flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 scroll-pl-6 sm:-mx-10 sm:px-10 sm:scroll-pl-10 lg:mx-14 lg:px-0 lg:pb-0 lg:scroll-pl-0"
+              className="no-scrollbar -mx-6 flex min-w-0 gap-4 overflow-x-auto px-6 pb-2 sm:-mx-10 sm:px-10 lg:mx-14 lg:overflow-x-hidden lg:px-0 lg:pb-0"
             >
               {filtered.map((doctor, i) => (
-                <Reveal
+                <div
                   key={doctor.name + i}
-                  delay={i * 0.06}
-                  className="w-[230px] shrink-0 snap-start sm:w-[260px] lg:w-[calc((100%_-_2rem)/3)]"
+                  className="w-[230px] shrink-0 sm:w-[260px] lg:w-[calc((100%_-_2rem)/3)]"
                 >
                   <div className="flex flex-col gap-4">
                     <PhotoPlaceholder
@@ -96,7 +99,7 @@ export function Doctors() {
                       </p>
                     </div>
                   </div>
-                </Reveal>
+                </div>
               ))}
             </div>
 
