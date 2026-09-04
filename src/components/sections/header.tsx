@@ -6,6 +6,7 @@ import Image from "next/image";
 import { navLinks, siteConfig } from "@/lib/site-data";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { PhoneIcon } from "@/components/icons";
 import { openBookingModal } from "@/lib/booking-modal";
 
 export function Header() {
@@ -38,7 +39,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-5 lg:flex">
+          <a
+            href={siteConfig.phoneHref}
+            className="hidden items-center gap-2 font-numeric text-base font-semibold text-ink transition-colors hover:text-ink/70 xl:flex"
+          >
+            <PhoneIcon className="h-4 w-4" />
+            {siteConfig.phone}
+          </a>
           <Button onClick={openBookingModal} size="lg">
             Записаться на приём
           </Button>
@@ -69,6 +77,14 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={siteConfig.phoneHref}
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 rounded-lg px-2 py-3 font-numeric text-lg font-semibold text-ink hover:bg-panel-alt"
+            >
+              <PhoneIcon className="h-4 w-4" />
+              {siteConfig.phone}
+            </a>
             <Button
               size="lg"
               className="mt-2 justify-center"
