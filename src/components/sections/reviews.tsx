@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
+import { Avatar } from "@/components/ui/avatar";
 import { StarIcon } from "@/components/icons";
 import { reviews, siteConfig } from "@/lib/site-data";
 
@@ -38,12 +38,7 @@ export function Reviews() {
                 className="flex h-full flex-col gap-4 rounded-[1.5rem] bg-panel-alt p-6"
               >
                 <div className="flex items-center gap-3">
-                  <PhotoPlaceholder
-                    label="фото пациента"
-                    className="h-11 w-11 shrink-0 rounded-full"
-                    rounded="rounded-full"
-                    compact
-                  />
+                  <Avatar name={review.name} className="h-11 w-11 shrink-0 rounded-full" />
                   <div>
                     <p className="text-sm font-semibold">{review.name}</p>
                     <div className="flex items-center gap-1 text-ink-muted">

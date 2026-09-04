@@ -18,7 +18,7 @@ export function ServiceCard({ service, badgeClassName }: { service: Service; bad
       </span>
 
       <div className="flex flex-col gap-1.5">
-        <h3 className="break-words font-display text-lg font-bold leading-snug">
+        <h3 className="break-words font-display text-base font-bold leading-snug">
           {service.title}
         </h3>
         <p className="text-sm leading-relaxed text-ink-muted">{service.description}</p>

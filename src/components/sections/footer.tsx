@@ -88,6 +88,12 @@ export function Footer() {
             <p>
               © {new Date().getFullYear()} {siteConfig.name}. Все права защищены.
             </p>
+            <p>
+              Создано разработчиком{" "}
+              <a href="mailto:dzartur34@gmail.com" className="font-semibold text-ink hover:underline">
+                Артуром
+              </a>
+            </p>
           </div>
         </Panel>
       </Container>

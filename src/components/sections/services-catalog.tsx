@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -22,6 +23,24 @@ export function ServicesCatalog() {
   return (
     <Panel className="flex flex-col gap-12">
       <div className="flex flex-col gap-6">
+        <Link
+          href="/"
+          className="inline-flex w-fit items-center gap-2 font-ui text-sm font-semibold text-ink-muted transition-colors hover:text-ink"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          На главную
+        </Link>
         <Eyebrow>Каталог услуг</Eyebrow>
         <h1 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
           Стоматологические услуги для всей семьи
