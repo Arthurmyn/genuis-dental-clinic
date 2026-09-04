@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { ClockIcon, PhoneIcon, PinIcon } from "@/components/icons";
+import { ArrowUpRightIcon, ClockIcon, PhoneIcon, PinIcon } from "@/components/icons";
 import { siteConfig } from "@/lib/site-data";
 
 export function Location() {
@@ -14,10 +14,9 @@ export function Location() {
 
           <div className="grid gap-6 overflow-hidden rounded-[1.5rem] bg-panel-alt lg:grid-cols-[1.1fr_1fr]">
             <Reveal className="h-80 lg:h-auto">
-              {/* TODO: заменить mapEmbedSrc в src/lib/site-data.ts на точный адрес клиники */}
               <iframe
                 src={siteConfig.mapEmbedSrc}
-                title="Карта расположения клиники"
+                title="Карта расположения клиники Genius на 2ГИС"
                 loading="lazy"
                 className="h-full w-full grayscale-[15%]"
                 style={{ border: 0 }}
@@ -60,6 +59,26 @@ export function Location() {
                     {siteConfig.phone}
                   </a>
                 </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href={siteConfig.twoGisRouteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 font-ui text-sm font-bold text-panel transition-colors hover:bg-ink/85"
+                >
+                  Построить маршрут в 2ГИС
+                  <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
+                </a>
+                <a
+                  href={siteConfig.twoGisFirmUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-ink underline underline-offset-4"
+                >
+                  Профиль на 2ГИС
+                </a>
               </div>
             </Reveal>
           </div>

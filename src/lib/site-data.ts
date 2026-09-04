@@ -15,10 +15,23 @@ export const siteConfig = {
   phoneSecondaryHref: "tel:+77004349554",
   email: "info@genius-stom.kz", // TODO: подтвердить адрес почты
   address: "Казахстан, г. Астана, ул. Толе би, 55",
+  city: "Астана",
+  addressLocality: "Astana",
+  addressCountry: "KZ",
+  coordinates: { lat: 51.126181, lon: 71.394568 },
   workHoursWeekdays: "10:00 – 20:00", // TODO: уточнить точное расписание по дням
   workHoursWeekend: "10:00 – 20:00", // TODO: уточнить точное расписание по дням
+  // 2ГИС не даёт бесплатный iframe-эмбед без регистрации виджета: нужно
+  // зайти на https://firmsonmap.api.2gis.ru/, указать org-id клиники
+  // (70000001075092075) и вставить сюда сгенерированный ими src.
+  // Пока используем открытый OpenStreetMap-эмбед с теми же координатами —
+  // он не требует ключей и точно работает. Кнопки ниже уже ведут на
+  // настоящий профиль и маршрут в 2ГИС.
   mapEmbedSrc:
-    "https://www.google.com/maps?q=Астана,+улица+Толе+би+55&output=embed",
+    "https://www.openstreetmap.org/export/embed.html?bbox=71.374568%2C51.116181%2C71.414568%2C51.136181&layer=mapnik&marker=51.126181%2C71.394568",
+  twoGisFirmUrl: "https://2gis.kz/astana/firm/70000001075092075",
+  twoGisRouteUrl: "https://2gis.kz/astana/routeSearch/to/71.394568,51.126181",
+  googleBusinessUrl: "#", // TODO: добавить ссылку на профиль Google Business
   rating: 5,
   reviewCount: 212, // по данным 2ГИС на момент сбора данных
   social: {
@@ -277,10 +290,27 @@ export const pricing: PricingCategory[] = [
 export type CaseItem = {
   title: string;
   note: string;
+  before: string;
+  after: string;
 };
 
 export const cases: CaseItem[] = [
-  { title: "Виниры на верхний ряд", note: "10 виниров, 2 визита" }, // TODO
-  { title: "Имплантация 3 зубов", note: "Одноэтапный протокол" }, // TODO
-  { title: "Отбеливание + гигиена", note: "Результат за 1 визит" }, // TODO
+  {
+    title: "Лечение кариеса под микроскопом",
+    note: "Композитная реставрация, 1 визит",
+    before: "/photos/cases/case-filling-before.jpg",
+    after: "/photos/cases/case-filling-after.jpg",
+  },
+  {
+    title: "Керамические виниры",
+    note: "Реставрация фронтальной группы зубов",
+    before: "/photos/cases/case-veneers-before.jpg",
+    after: "/photos/cases/case-veneers-after.jpg",
+  },
+  {
+    title: "Протезирование коронками",
+    note: "Замена старых металлических коронок",
+    before: "/photos/cases/case-crowns-before.jpg",
+    after: "/photos/cases/case-crowns-after.jpg",
+  },
 ];

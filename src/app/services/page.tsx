@@ -6,9 +6,22 @@ import { ServicesCatalog } from "@/components/sections/services-catalog";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/lib/site-data";
 
+const TITLE = "Услуги стоматологии в Астане";
+const DESCRIPTION =
+  "Полный каталог услуг стоматологии Genius в Астане: диагностика, гигиена, терапия, имплантация, виниры, брекеты и детская стоматология.";
+
 export const metadata: Metadata = {
-  title: `Услуги — ${siteConfig.name}`,
-  description: "Полный каталог стоматологических услуг: диагностика, гигиена, терапия, имплантация, ортодонтия и детская стоматология.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: `${TITLE} — ${siteConfig.name}`,
+    description: DESCRIPTION,
+    url: "/services",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.name }],
+  },
 };
 
 export default function ServicesPage() {

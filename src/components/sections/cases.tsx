@@ -25,12 +25,14 @@ export function Cases() {
               <Reveal key={item.title} delay={i * 0.08} className="flex flex-col gap-3">
                 <div className="grid grid-cols-2 gap-1.5">
                   <PhotoPlaceholder
-                    label={`«до» — ${item.title.toLowerCase()}`}
+                    src={item.before}
+                    label={`До: ${item.title.toLowerCase()}`}
                     className="aspect-square rounded-[1.25rem]"
                     rounded="rounded-[1.25rem]"
                   />
                   <PhotoPlaceholder
-                    label={`«после» — ${item.title.toLowerCase()}`}
+                    src={item.after}
+                    label={`После: ${item.title.toLowerCase()}`}
                     className="aspect-square rounded-[1.25rem]"
                     rounded="rounded-[1.25rem]"
                   />

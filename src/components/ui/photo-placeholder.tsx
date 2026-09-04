@@ -25,7 +25,13 @@ export function PhotoPlaceholder({
   if (src) {
     return (
       <div className={cn("relative overflow-hidden", rounded, className)}>
-        <Image src={src} alt={label} fill className="object-cover" />
+        <Image
+          src={src}
+          alt={label}
+          fill
+          sizes="(min-width: 1024px) 33vw, 50vw"
+          className="object-cover"
+        />
       </div>
     );
   }

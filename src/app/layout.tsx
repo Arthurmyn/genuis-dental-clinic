@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import { Inter, Manrope, PT_Sans, Space_Grotesk } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
 import { BookingModal } from "@/components/booking-modal";
+import { StructuredData } from "@/components/structured-data";
 import "./globals.css";
+
+const SITE_URL = "https://genuis-dental.vercel.app";
+const TITLE = `${siteConfig.name} — стоматология в Астане`;
+const DESCRIPTION =
+  "Стоматология в Астане (ул. Толе би, 55): терапия, имплантация, виниры, брекеты и детская стоматология. Рейтинг 5.0 на 2ГИС. Запишитесь на приём онлайн.";
 
 // Headings — soft, rounded geometric sans, supports Cyrillic.
 const manrope = Manrope({
@@ -34,15 +40,50 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — ${siteConfig.tagline}`,
-  description:
-    "Современная стоматологическая клиника: терапия, имплантация, ортодонтия и детская стоматология. Запишитесь на приём онлайн.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: `%s — ${siteConfig.name}`,
+  },
+  description: DESCRIPTION,
+  keywords: [
+    "стоматология Астана",
+    "стоматологическая клиника Астана",
+    "имплантация зубов Астана",
+    "виниры Астана",
+    "брекеты Астана",
+    "лечение зубов Астана",
+    siteConfig.name,
+  ],
+  authors: [{ name: siteConfig.name }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description:
-      "Современная стоматологическая клиника: терапия, имплантация, ортодонтия и детская стоматология.",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: siteConfig.name,
     type: "website",
     locale: "ru_RU",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -53,6 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} ${inter.variable} ${ptSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page font-sans text-ink">
+        <StructuredData />
         {children}
         <BookingModal />
       </body>

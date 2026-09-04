@@ -8,6 +8,8 @@ const socialLinks = [
   { label: "Instagram", href: siteConfig.social.instagram },
   { label: "WhatsApp", href: siteConfig.social.whatsapp },
   { label: "Telegram", href: siteConfig.social.telegram },
+  { label: "2ГИС", href: siteConfig.twoGisFirmUrl },
+  { label: "Google Профиль", href: siteConfig.googleBusinessUrl }, // TODO: подставить ссылку на Google Business
 ];
 
 export function Footer() {
