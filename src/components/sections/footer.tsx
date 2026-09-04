@@ -91,7 +91,7 @@ export function Footer() {
             <p>
               Создано разработчиком{" "}
               <a href="mailto:dzartur34@gmail.com" className="font-semibold text-ink hover:underline">
-                Артуром
+                Артуром Джаксыгалиевым
               </a>
             </p>
           </div>
