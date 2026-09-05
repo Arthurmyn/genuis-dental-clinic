@@ -6,7 +6,7 @@ import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const SITE_URL = "https://genuis-dental.vercel.app";
-const TITLE = `${siteConfig.name} — стоматология в Астане`;
+const TITLE = `${siteConfig.name} - стоматология в Астане`;
 const DESCRIPTION =
   "Стоматология в Астане (ул. Толе би, 55): терапия, хирургия, имплантация All-on-4/All-on-6, виниры и брекеты. Рейтинг 5.0 на 2ГИС. Запишитесь на приём онлайн.";
 
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: `%s — ${siteConfig.name}`,
+    template: `%s - ${siteConfig.name}`,
   },
   description: DESCRIPTION,
   keywords: [

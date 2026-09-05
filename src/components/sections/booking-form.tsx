@@ -19,7 +19,7 @@ export function BookingForm() {
             <SectionHeading
               eyebrow={tr(d.booking.eyebrow)}
               title={tr(d.booking.heading)}
-              description={`${tr(d.booking.description)} ${siteConfig.phone}`}
+              description={`${tr(d.booking.description)} ${siteConfig.phone.replace(/ /g, " ")}`}
             />
           </Reveal>
 

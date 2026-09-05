@@ -96,7 +96,7 @@ export function Footer() {
             <p>
               {tr(d.footer.credit)}{" "}
               <a href="mailto:dzartur34@gmail.com" className="font-semibold text-ink hover:underline">
-                Артуром Джаксыгалиевым
+                Артур Джаксыгалиев
               </a>
             </p>
           </div>

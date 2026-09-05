@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/services",
   },
   openGraph: {
-    title: `${TITLE} — ${siteConfig.name}`,
+    title: `${TITLE} - ${siteConfig.name}`,
     description: DESCRIPTION,
     url: "/services",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: siteConfig.name }],

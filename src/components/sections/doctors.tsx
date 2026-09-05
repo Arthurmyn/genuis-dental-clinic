@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
-import { doctorCategoryLabels, doctors, type DoctorCategory } from "@/lib/site-data";
+import { doctorCategoryLabels, doctors, teamPhoto, type DoctorCategory } from "@/lib/site-data";
 
 const presentCategories = new Set(doctors.map((d) => d.category));
 
@@ -116,6 +117,16 @@ export function Doctors() {
                 <path d="m9 18 6-6-6-6" />
               </svg>
             </button>
+          </div>
+
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] sm:aspect-[21/9]">
+            <Image
+              src={teamPhoto}
+              alt={tr(d.doctors.heading)}
+              fill
+              sizes="(min-width: 1024px) 90vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </Panel>
       </Container>

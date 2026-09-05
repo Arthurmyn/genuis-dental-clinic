@@ -58,33 +58,32 @@ export function PricingCatalog() {
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-2">
         {pricing.map((category, i) => {
           const minPrice = minPriceOf(category.items);
-          const wide = i === 0 || i === 3;
 
           return (
             <Reveal
               key={category.category.ru}
               delay={i * 0.06}
-              className={cn(category.highlighted ? "lg:col-span-3" : wide && "lg:col-span-2")}
+              className={cn(category.highlighted && "lg:col-span-2")}
             >
               <div
                 className={cn(
-                  "flex h-full flex-col gap-6 rounded-[1.75rem] p-8",
+                  "flex h-full flex-col gap-4 rounded-[1.5rem] p-6",
                   category.highlighted ? "bg-accent" : "bg-panel-alt",
-                  category.highlighted && "lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-6",
+                  category.highlighted && "lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-4",
                 )}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h2 className="font-display text-xl font-bold sm:text-2xl">
+                  <h2 className="font-display text-lg font-bold sm:text-xl">
                     {tr(category.category)}
                   </h2>
                   <div className="text-right">
                     <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
                       {tr(d.common.from)}
                     </p>
-                    <p className="font-numeric text-3xl font-extrabold leading-none sm:text-4xl">
+                    <p className="font-numeric text-2xl font-extrabold leading-none sm:text-3xl">
                       {minPrice.toLocaleString("ru-RU")} ₸
                     </p>
                   </div>
@@ -93,14 +92,14 @@ export function PricingCatalog() {
                 <ul
                   className={cn(
                     "flex flex-col divide-y divide-ink/10",
-                    category.highlighted && "lg:col-span-2 lg:grid lg:grid-cols-2 lg:divide-y-0 lg:gap-x-10",
+                    category.highlighted && "lg:col-span-2 lg:grid lg:grid-cols-2 lg:divide-y-0 lg:gap-x-8",
                   )}
                 >
                   {category.items.map((item) => (
                     <li
                       key={item.name.ru}
                       className={cn(
-                        "flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3",
+                        "flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 py-2.5",
                         category.highlighted && "lg:border-b lg:border-ink/10",
                       )}
                     >
