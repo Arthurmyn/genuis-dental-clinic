@@ -1,23 +1,22 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://genuis-dental.vercel.app";
+import { siteConfig } from "@/lib/site-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: SITE_URL,
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${SITE_URL}/services`,
+      url: `${siteConfig.url}/services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/pricing`,
+      url: `${siteConfig.url}/pricing`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,

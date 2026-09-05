@@ -10,6 +10,9 @@ import type { LocalizedText } from "@/lib/i18n";
 export const siteConfig = {
   name: "Genius Dental Clinic",
   shortName: "Genius",
+  // Канонический домен клиники. apex geniusstom.com настроен на 308-редирект
+  // на www — во всех metadata/sitemap/robots/JSON-LD используем www-адрес.
+  url: "https://www.geniusstom.com",
   tagline: { ru: "Стоматология нового поколения", kk: "Жаңа буын стоматологиясы" } satisfies LocalizedText,
   phone: "+7 775 507 77 63",
   phoneHref: "tel:+77755077763",

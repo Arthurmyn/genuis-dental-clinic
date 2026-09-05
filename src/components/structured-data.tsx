@@ -1,15 +1,14 @@
 import { siteConfig } from "@/lib/site-data";
 
-const SITE_URL = "https://genuis-dental.vercel.app";
-
 export function StructuredData() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Dentist",
+    "@id": `${siteConfig.url}/#dentist`,
     name: siteConfig.name,
-    image: `${SITE_URL}/og-image.jpg`,
-    logo: `${SITE_URL}/photos/genius-logo.jpg`,
-    url: SITE_URL,
+    image: `${siteConfig.url}/og-image.jpg`,
+    logo: `${siteConfig.url}/photos/genius-logo.jpg`,
+    url: siteConfig.url,
     telephone: siteConfig.phoneHref.replace("tel:", ""),
     priceRange: "$$",
     address: {
@@ -46,6 +45,7 @@ export function StructuredData() {
       siteConfig.social.instagram,
       siteConfig.twoGisFirmUrl,
       siteConfig.social.whatsapp,
+      siteConfig.social.telegram,
     ],
     areaServed: {
       "@type": "City",

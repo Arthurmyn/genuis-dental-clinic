@@ -5,7 +5,6 @@ import { StructuredData } from "@/components/structured-data";
 import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
 
-const SITE_URL = "https://genuis-dental.vercel.app";
 const TITLE = `${siteConfig.name} - стоматология в Астане`;
 const DESCRIPTION =
   "Стоматология в Астане (ул. Толе би, 55): терапия, хирургия, имплантация All-on-4/All-on-6, виниры и брекеты. Рейтинг 5.0 на 2ГИС. Запишитесь на приём онлайн.";
@@ -40,7 +39,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: TITLE,
     template: `%s - ${siteConfig.name}`,
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: SITE_URL,
+    url: siteConfig.url,
     siteName: siteConfig.name,
     type: "website",
     locale: "ru_RU",
