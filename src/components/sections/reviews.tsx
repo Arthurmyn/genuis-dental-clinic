@@ -1,33 +1,36 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Avatar } from "@/components/ui/avatar";
 import { StarIcon } from "@/components/icons";
+import { useT } from "@/lib/i18n";
 import { reviews, siteConfig } from "@/lib/site-data";
 
 export function Reviews() {
+  const { d, tr } = useT();
+
   return (
     <section id="reviews" className="py-6">
       <Container>
         <Panel className="flex flex-col gap-12">
           <div className="flex flex-col gap-4">
-            <Eyebrow>Отзывы</Eyebrow>
+            <Eyebrow>{tr(d.reviews.eyebrow)}</Eyebrow>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 className="max-w-lg font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-                Что говорят пациенты
+                {tr(d.reviews.heading)}
               </h2>
               <div className="flex items-center gap-2 rounded-full bg-panel-alt px-4 py-2 text-sm">
                 <StarIcon className="h-4 w-4 text-ink" />
                 <span className="font-numeric font-bold">{siteConfig.rating.toFixed(1)}</span>
                 <span className="text-ink-muted">
-                  · <span className="font-numeric">{siteConfig.reviewCount}</span> отзывов на 2ГИС
+                  · <span className="font-numeric">{siteConfig.reviewCount}</span> {tr(d.reviews.reviewsWord)}
                 </span>
               </div>
             </div>
-            <p className="max-w-lg text-sm text-ink-muted">
-              Реальные отзывы пациентов клиники с 2ГИС.
-            </p>
+            <p className="max-w-lg text-sm text-ink-muted">{tr(d.reviews.description)}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -63,7 +66,7 @@ export function Reviews() {
             rel="noopener noreferrer"
             className="mx-auto inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-ui text-sm font-bold text-panel transition-colors hover:bg-ink/85"
           >
-            Посмотреть все отзывы на 2ГИС
+            {tr(d.common.seeAllReviews)}
           </a>
         </Panel>
       </Container>

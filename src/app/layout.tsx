@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, PT_Sans, Space_Grotesk } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
-import { BookingModal } from "@/components/booking-modal";
 import { StructuredData } from "@/components/structured-data";
+import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const SITE_URL = "https://genuis-dental.vercel.app";
 const TITLE = `${siteConfig.name} — стоматология в Астане`;
 const DESCRIPTION =
-  "Стоматология в Астане (ул. Толе би, 55): терапия, имплантация, виниры, брекеты и детская стоматология. Рейтинг 5.0 на 2ГИС. Запишитесь на приём онлайн.";
+  "Стоматология в Астане (ул. Толе би, 55): терапия, хирургия, имплантация All-on-4/All-on-6, виниры и брекеты. Рейтинг 5.0 на 2ГИС. Запишитесь на приём онлайн.";
 
 // Headings — soft, rounded geometric sans, supports Cyrillic.
 const manrope = Manrope({
@@ -53,6 +53,8 @@ export const metadata: Metadata = {
     "виниры Астана",
     "брекеты Астана",
     "лечение зубов Астана",
+    "All-on-4 Астана",
+    "All-on-6 Астана",
     siteConfig.name,
   ],
   authors: [{ name: siteConfig.name }],
@@ -95,8 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col overflow-x-hidden bg-page font-sans text-ink">
         <StructuredData />
-        {children}
-        <BookingModal />
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

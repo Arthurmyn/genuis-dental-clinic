@@ -1,20 +1,25 @@
 // Content shown across the landing page.
 // TODO: replace every placeholder value below with the clinic's real data.
+import type { LocalizedText } from "@/lib/i18n";
 
-// Данные ниже взяты с карточки клиники на 2ГИС (https://go.2gis.com/YHWSl)
-// и профиля Instagram @genius_stom. Полное расписание по дням, email,
-// стаж врачей и юр. реквизиты 2ГИС не показывает — уточните напрямую и
-// замените отмеченные TODO.
+// Данные ниже взяты с карточки клиники на 2ГИС (https://go.2gis.com/YHWSl),
+// профиля Instagram @genius_stom и правок клиники. Полное расписание по
+// дням, email и стаж врачей 2ГИС не показывает — уточните напрямую и
+// замените отмеченные TODO. Переводы на казахский выполнены ИИ — перед
+// запуском их стоит вычитать носителю языка.
 export const siteConfig = {
   name: "Genius Dental Clinic",
   shortName: "Genius",
-  tagline: "Стоматология нового поколения",
+  tagline: { ru: "Стоматология нового поколения", kk: "Жаңа буын стоматологиясы" } satisfies LocalizedText,
   phone: "+7 775 507 77 63",
   phoneHref: "tel:+77755077763",
   phoneSecondary: "+7 700 434 95 54",
   phoneSecondaryHref: "tel:+77004349554",
   email: "info@genius-stom.kz", // TODO: подтвердить адрес почты
-  address: "Казахстан, г. Астана, ул. Толе би, 55",
+  address: {
+    ru: "Казахстан, г. Астана, ул. Толе би, 55",
+    kk: "Қазақстан, Астана қаласы, Төле би көшесі, 55",
+  } satisfies LocalizedText,
   city: "Астана",
   addressLocality: "Astana",
   addressCountry: "KZ",
@@ -35,19 +40,21 @@ export const siteConfig = {
   reviewCount: 212, // по данным 2ГИС на момент сбора данных
   social: {
     instagram: "https://www.instagram.com/genius_stom/",
+    // TODO: подтвердить, что это реальный WhatsApp клиники (сейчас — тот
+    // же номер, что и основной телефон).
     whatsapp: "https://wa.me/77755077763",
     telegram: "https://t.me/+77755077763", // TODO: подтвердить точный юзернейм в Telegram
   },
-  license: "Лицензия № KZ00LAA00000000 от 00.00.0000", // TODO
-  requisites: "ТОО «Genius», БИН 000000000000", // TODO
+  license: "Лицензия № 23014118",
+  requisites: "ИП «Рахманов Д.О.», ИИН 880918301497",
 };
 
-export const navLinks = [
-  { href: "/services", label: "Услуги" },
-  { href: "/#doctors", label: "Наша команда" },
-  { href: "/pricing", label: "Цены" },
-  { href: "/#about", label: "О клинике" },
-  { href: "/#contacts", label: "Контакты" },
+export const navLinks: { href: string; label: LocalizedText }[] = [
+  { href: "/services", label: { ru: "Услуги", kk: "Қызметтер" } },
+  { href: "/#doctors", label: { ru: "Наша команда", kk: "Біздің команда" } },
+  { href: "/pricing", label: { ru: "Цены", kk: "Бағалар" } },
+  { href: "/#about", label: { ru: "О клинике", kk: "Клиника туралы" } },
+  { href: "/#contacts", label: { ru: "Контакты", kk: "Байланыс" } },
 ];
 
 export type ServiceCategory =
@@ -55,30 +62,29 @@ export type ServiceCategory =
   | "hygiene"
   | "cosmetic"
   | "therapy"
+  | "surgery"
   | "prosthetics"
   | "implants"
-  | "orthodontics"
-  | "kids";
+  | "orthodontics";
 
-export const serviceCategoryLabels: Record<ServiceCategory, string> = {
-  diagnostics: "Диагностика",
-  hygiene: "Гигиена",
-  cosmetic: "Эстетика",
-  therapy: "Терапия",
-  prosthetics: "Ортопедия",
-  implants: "Имплантация",
-  orthodontics: "Ортодонтия",
-  kids: "Детская",
+export const serviceCategoryLabels: Record<ServiceCategory, LocalizedText> = {
+  diagnostics: { ru: "Диагностика", kk: "Диагностика" },
+  hygiene: { ru: "Гигиена", kk: "Гигиена" },
+  cosmetic: { ru: "Эстетика", kk: "Эстетика" },
+  therapy: { ru: "Терапия", kk: "Терапия" },
+  surgery: { ru: "Хирургия", kk: "Хирургия" },
+  prosthetics: { ru: "Ортопедия", kk: "Ортопедия" },
+  implants: { ru: "Имплантация", kk: "Имплантация" },
+  orthodontics: { ru: "Брекеты", kk: "Брекеттер" },
 };
 
 export type Service = {
   slug: string;
   icon: "tooth" | "sparkle" | "aligner" | "implant" | "kids" | "shield" | "crown" | "drop";
   category: ServiceCategory;
-  title: string;
-  priceFrom: number;
-  description: string;
-  items: string[];
+  title: LocalizedText;
+  description: LocalizedText;
+  items: LocalizedText[];
 };
 
 export const services: Service[] = [
@@ -86,196 +92,254 @@ export const services: Service[] = [
     slug: "diagnostics",
     icon: "shield",
     category: "diagnostics",
-    title: "Диагностика и осмотр",
-    priceFrom: 1500, // TODO
-    description: "Полный осмотр полости рта, консультация и план лечения.",
-    items: ["Первичная консультация", "Компьютерная томография", "План лечения"],
+    title: { ru: "Диагностика и осмотр", kk: "Диагностика және тексеру" },
+    description: {
+      ru: "Полный осмотр полости рта, консультация и план лечения.",
+      kk: "Ауыз қуысын толық тексеру, кеңес беру және емдеу жоспары.",
+    },
+    items: [
+      { ru: "Первичная консультация", kk: "Алғашқы кеңес" },
+      { ru: "Прицельный снимок", kk: "Прицелды рентген снимогі" },
+      { ru: "План лечения", kk: "Емдеу жоспары" },
+    ],
   },
   {
     slug: "hygiene",
     icon: "drop",
     category: "hygiene",
-    title: "Профессиональная гигиена",
-    priceFrom: 4900, // TODO
-    description: "Снятие налёта и камня, полировка, укрепление эмали.",
-    items: ["Ультразвуковая чистка", "Air Flow", "Фторирование"],
-  },
-  {
-    slug: "whitening",
-    icon: "sparkle",
-    category: "cosmetic",
-    title: "Отбеливание",
-    priceFrom: 12000, // TODO
-    description: "Безопасное отбеливание зубов до 8 тонов за один визит.",
-    items: ["ZOOM 4", "Домашнее отбеливание", "Реминерализация"],
+    title: { ru: "Профессиональная гигиена", kk: "Кәсіби гигиена" },
+    description: {
+      ru: "Снятие налёта и камня, полировка, укрепление эмали.",
+      kk: "Тас пен жабынды алу, жылтырату, эмальді нығайту.",
+    },
+    items: [
+      { ru: "Ультразвуковая чистка", kk: "Ультрадыбыстық тазалау" },
+      { ru: "Air Flow", kk: "Air Flow" },
+      { ru: "Фторирование", kk: "Фторлау" },
+    ],
   },
   {
     slug: "therapy",
     icon: "shield",
     category: "therapy",
-    title: "Терапия",
-    priceFrom: 6500, // TODO
-    description: "Лечим кариес, пульпит и другие заболевания зубов безболезненно, с современной анестезией.",
-    items: ["Лечение кариеса", "Лечение пульпита", "Комфортная анестезия"],
+    title: { ru: "Терапия", kk: "Терапия" },
+    description: {
+      ru: "Лечим кариес, пульпит и другие заболевания зубов безболезненно, с современной анестезией.",
+      kk: "Кариес, пульпит және басқа тіс ауруларын заманауи анестезиямен ауыртпай емдейміз.",
+    },
+    items: [
+      { ru: "Лечение кариеса", kk: "Кариесті емдеу" },
+      { ru: "Лечение пульпита", kk: "Пульпитті емдеу" },
+      { ru: "Комфортная анестезия", kk: "Жайлы анестезия" },
+    ],
   },
   {
     slug: "endodontics",
     icon: "tooth",
     category: "therapy",
-    title: "Эндодонтия",
-    priceFrom: 15000, // TODO
-    description: "Лечение каналов зуба под контролем микроскопа — стремимся сохранить собственный зуб, а не удалять его.",
-    items: ["Лечение каналов под микроскопом", "Перелечивание каналов", "Пломбирование каналов"],
+    title: { ru: "Эндодонтия", kk: "Эндодонтия" },
+    description: {
+      ru: "Лечение каналов зуба под контролем микроскопа — стремимся сохранить собственный зуб, а не удалять его.",
+      kk: "Тіс арналарын микроскоп бақылауымен емдеу — тісті жұлудың орнына сақтап қалуға тырысамыз.",
+    },
+    items: [
+      { ru: "Лечение каналов под микроскопом", kk: "Арналарды микроскоппен емдеу" },
+      { ru: "Перелечивание каналов", kk: "Арналарды қайта емдеу" },
+      { ru: "Пломбирование каналов", kk: "Арналарды пломбалау" },
+    ],
   },
   {
     slug: "restoration",
     icon: "sparkle",
     category: "therapy",
-    title: "Реставрация",
-    priceFrom: 12000, // TODO
-    description: "Возвращаем зубу естественную форму, прочность и внешний вид после повреждений.",
-    items: ["Художественная реставрация", "Восстановление сколов", "Коррекция формы зуба"],
+    title: { ru: "Реставрация", kk: "Реставрация" },
+    description: {
+      ru: "Возвращаем зубу естественную форму, прочность и внешний вид после повреждений.",
+      kk: "Зақымданудан кейін тіске табиғи пішінін, беріктігін және сыртқы көрінісін қайтарамыз.",
+    },
+    items: [
+      { ru: "Художественная реставрация", kk: "Көркем реставрация" },
+      { ru: "Восстановление сколов", kk: "Сынықтарды қалпына келтіру" },
+      { ru: "Коррекция формы зуба", kk: "Тіс пішінін түзету" },
+    ],
+  },
+  {
+    slug: "surgery",
+    icon: "shield",
+    category: "surgery",
+    title: { ru: "Хирургия", kk: "Хирургия" },
+    description: {
+      ru: "Хирургическое лечение и удаление зубов любой сложности, включая зубы мудрости.",
+      kk: "Кез келген күрделіліктегі тістерді, оның ішінде ақыл тісін хирургиялық емдеу және жұлу.",
+    },
+    items: [
+      { ru: "Удаление зуба", kk: "Тісті жұлу" },
+      { ru: "Удаление зуба мудрости", kk: "Ақыл тісін жұлу" },
+      { ru: "Костная пластика", kk: "Сүйек пластикасы" },
+    ],
   },
   {
     slug: "prosthetics",
     icon: "crown",
     category: "prosthetics",
-    title: "Ортопедия",
-    priceFrom: 25000, // TODO
-    description: "Коронки, вкладки и протезы, которые восстанавливают жевательную функцию и выглядят естественно.",
-    items: ["Коронки", "Вкладки", "Мостовидные протезы"],
+    title: { ru: "Ортопедия", kk: "Ортопедия" },
+    description: {
+      ru: "Коронки, вкладки и протезы, которые восстанавливают жевательную функцию и выглядят естественно.",
+      kk: "Шайнау қызметін қалпына келтіретін және табиғи көрінетін коронкалар, инлейлер мен протездер.",
+    },
+    items: [
+      { ru: "Коронки", kk: "Коронкалар" },
+      { ru: "Вкладки", kk: "Инлейлер" },
+      { ru: "Мостовидные протезы", kk: "Көпір тәрізді протездер" },
+    ],
   },
   {
     slug: "veneers",
     icon: "crown",
     category: "cosmetic",
-    title: "Виниры",
-    priceFrom: 35000, // TODO
-    description: "Тонкие керамические накладки, которые меняют форму и цвет зубов для ровной, гармоничной улыбки.",
-    items: ["Керамические виниры", "Индивидуальный дизайн улыбки", "Минимальная обработка эмали"],
+    title: { ru: "Виниры", kk: "Винирлер" },
+    description: {
+      ru: "Тонкие керамические накладки, которые меняют форму и цвет зубов для ровной, гармоничной улыбки.",
+      kk: "Тегіс, үйлесімді күлкі үшін тістердің пішіні мен түсін өзгертетін жұқа керамикалық қаптамалар.",
+    },
+    items: [
+      { ru: "Керамические виниры", kk: "Керамикалық винирлер" },
+      { ru: "Индивидуальный дизайн улыбки", kk: "Жеке күлкі дизайны" },
+      { ru: "Минимальная обработка эмали", kk: "Эмальді минималды өңдеу" },
+    ],
   },
   {
     slug: "implants",
     icon: "implant",
     category: "implants",
-    title: "Имплантация",
-    priceFrom: 45000, // TODO
-    description: "Замена утраченного зуба надёжным имплантом, когда лечение уже не поможет его спасти.",
-    items: ["Одноэтапная имплантация", "Костная пластика", "Протезирование на имплантах"],
+    title: { ru: "Имплантация", kk: "Имплантация" },
+    description: {
+      ru: "Замена утраченного зуба надёжным имплантом, когда лечение уже не поможет его спасти.",
+      kk: "Емдеу тісті құтқаруға көмектеспегенде, жоғалған тісті сенімді имплантпен алмастыру.",
+    },
+    items: [
+      { ru: "Одноэтапная имплантация", kk: "Бір кезеңді имплантация" },
+      { ru: "All-on-4", kk: "All-on-4" },
+      { ru: "All-on-6", kk: "All-on-6" },
+    ],
   },
   {
     slug: "braces",
     icon: "aligner",
     category: "orthodontics",
-    title: "Брекеты",
-    priceFrom: 35000, // TODO
-    description: "Выравниваем зубы и исправляем прикус — брекет-системы подходят и детям, и взрослым.",
-    items: ["Брекет-системы", "Элайнеры", "Ретенционный период"],
-  },
-  {
-    slug: "kids",
-    icon: "kids",
-    category: "kids",
-    title: "Детская стоматология",
-    priceFrom: 3500, // TODO
-    description: "Бережное лечение молочных и постоянных зубов без слёз.",
-    items: ["Лечение молочных зубов", "Герметизация фиссур", "Седация закисью азота"],
+    title: { ru: "Брекеты", kk: "Брекеттер" },
+    description: {
+      ru: "Выравниваем зубы и исправляем прикус — брекет-системы подходят и детям, и взрослым.",
+      kk: "Тістерді туралаймыз және тістеуді дұрыстаймыз — брекет-жүйелер балаларға да, ересектерге де жарайды.",
+    },
+    items: [
+      { ru: "Брекет-системы", kk: "Брекет-жүйелер" },
+      { ru: "Элайнеры", kk: "Элайнерлер" },
+    ],
   },
 ];
 
 export type Feature = {
   icon: "shield" | "kids" | "sparkle" | "tooth";
-  title: string;
-  description: string;
+  title: LocalizedText;
+  description: LocalizedText;
   highlighted?: boolean;
 };
 
 export const features: Feature[] = [
   {
     icon: "shield",
-    title: "Современное оборудование",
-    description: "Используем последние разработки в стоматологии для точной диагностики и лечения.",
+    title: { ru: "Современное оборудование", kk: "Заманауи жабдық" },
+    description: {
+      ru: "Используем последние разработки в стоматологии для точной диагностики и лечения.",
+      kk: "Дәл диагностика мен емдеу үшін стоматологиядағы соңғы әзірлемелерді қолданамыз.",
+    },
   },
   {
     icon: "kids",
-    title: "Опытная и заботливая команда",
-    description: "Врачи и гигиенисты с многолетним опытом и постоянным повышением квалификации.",
+    title: { ru: "Опытная и заботливая команда", kk: "Тәжірибелі және қамқор команда" },
+    description: {
+      ru: "Врачи и гигиенисты с многолетним опытом и постоянным повышением квалификации.",
+      kk: "Көп жылдық тәжірибесі бар және біліктілігін үнемі арттыратын дәрігерлер мен гигиенистер.",
+    },
   },
   {
     icon: "tooth",
-    title: "Лечение без боли и стресса",
-    description: "Понимаем, что визит к стоматологу может пугать — используем щадящие методики.",
+    title: { ru: "Лечение без боли и стресса", kk: "Ауырсынусыз және стресссіз емдеу" },
+    description: {
+      ru: "Понимаем, что визит к стоматологу может пугать — используем щадящие методики.",
+      kk: "Стоматологқа бару қорқынышты болуы мүмкін екенін түсінеміз — жұмсақ әдістерді қолданамыз.",
+    },
     highlighted: true,
   },
   {
     icon: "sparkle",
-    title: "Индивидуальный подход",
-    description: "Каждая улыбка уникальна, поэтому и план лечения мы составляем персонально.",
+    title: { ru: "Индивидуальный подход", kk: "Жеке көзқарас" },
+    description: {
+      ru: "Каждая улыбка уникальна, поэтому и план лечения мы составляем персонально.",
+      kk: "Әр күлкі бірегей, сондықтан емдеу жоспарын жеке дайындаймыз.",
+    },
   },
 ];
 
-export type DoctorCategory = "therapists" | "surgeons" | "orthodontists" | "kids";
+export type DoctorCategory = "therapists" | "surgeons" | "orthodontists";
 
-export const doctorCategoryLabels: Record<DoctorCategory, string> = {
-  therapists: "Терапевты",
-  surgeons: "Хирурги",
-  orthodontists: "Ортодонты",
-  kids: "Детские",
+export const doctorCategoryLabels: Record<DoctorCategory, LocalizedText> = {
+  therapists: { ru: "Терапевты", kk: "Терапевттер" },
+  surgeons: { ru: "Хирурги", kk: "Хирургтер" },
+  orthodontists: { ru: "Ортодонты", kk: "Ортодонттар" },
 };
 
 export type Doctor = {
   name: string;
-  role: string;
+  role: LocalizedText;
   category: DoctorCategory;
   experienceYears: number;
   photo?: string;
 };
 
-// Имена и фото — реальные (переданы клиникой и/или подтверждены отзывами
-// на 2ГИС). Точную специализацию для части врачей 2ГИС не показывает —
-// для них должность оставлена мок-значением на время запуска (см.
-// договорённость), их стоит уточнить и заменить при получении точных
-// данных от клиники.
+// Имена и фото — реальные (переданы клиникой). Точную специализацию для
+// части врачей клиника ещё не прислала — для них должность оставлена
+// мок-значением на время запуска, стоит уточнить и заменить.
 export const doctors: Doctor[] = [
   {
-    name: "Нурбек Маратович",
-    role: "Стоматолог-терапевт", // TODO: уточнить специализацию
+    name: "Наушарипов Нурбек",
+    role: { ru: "Стоматолог-терапевт", kk: "Терапевт-стоматолог" }, // TODO: уточнить специализацию
     category: "therapists",
     experienceYears: 10, // TODO: уточнить стаж
     photo: "/photos/doctors/nurbek.jpg",
   },
   {
-    name: "Данияр Рахманов",
-    role: "Хирург-имплантолог", // подтверждено отзывом на 2ГИС
-    category: "surgeons",
-    experienceYears: 8, // TODO: уточнить стаж
-    photo: "/photos/doctors/daniyar.jpg",
-  },
-  {
-    name: "Султан Набижанович",
-    role: "Хирург-имплантолог",
+    name: "Садыков Султан",
+    role: { ru: "Хирург-имплантолог", kk: "Хирург-имплантолог" },
     category: "surgeons",
     experienceYears: 9, // TODO: уточнить стаж
     photo: "/photos/doctors/sultan.jpg",
   },
   {
-    name: "Нурсултан Аскарович",
-    role: "Врач-эндодонтист", // TODO: уточнить специализацию
-    category: "therapists",
-    experienceYears: 7, // TODO: уточнить стаж
-    photo: "/photos/doctors/nursultan.jpg",
-  },
-  {
-    name: "Диляра Назарбекова",
-    role: "Ортодонт", // подтверждено отзывом на 2ГИС
+    name: "Тимергалиева Диляра",
+    role: { ru: "Ортодонт", kk: "Ортодонт" }, // подтверждено отзывом на 2ГИС
     category: "orthodontists",
     experienceYears: 7, // TODO: уточнить стаж
+    photo: "/photos/doctors/dilyara.jpg",
   },
   {
-    name: "Молдир Кайратовна",
-    role: "Детский стоматолог", // TODO: уточнить специализацию
-    category: "kids",
+    name: "Рымханова Молдир",
+    role: { ru: "Стоматолог-терапевт", kk: "Терапевт-стоматолог" }, // TODO: уточнить специализацию
+    category: "therapists",
     experienceYears: 6, // TODO: уточнить стаж
+  },
+  {
+    name: "Кикашев Аслан",
+    role: { ru: "Стоматолог-хирург", kk: "Хирург-стоматолог" }, // TODO: уточнить специализацию
+    category: "surgeons",
+    experienceYears: 5, // TODO: уточнить стаж
+  },
+  {
+    name: "Саттар Нурсултан",
+    role: { ru: "Врач-эндодонтист", kk: "Дәрігер-эндодонтист" }, // TODO: уточнить специализацию
+    category: "therapists",
+    experienceYears: 7, // TODO: уточнить стаж
   },
 ];
 
@@ -284,6 +348,8 @@ export type Review = {
   rating: number;
   date: string;
   source: string;
+  // Реальные отзывы приведены как есть, на языке оригинала (русский) —
+  // не переводим цитаты пациентов, чтобы сохранить их подлинность.
   text: string;
 };
 
@@ -302,14 +368,7 @@ export const reviews: Review[] = [
     rating: 5,
     date: "2026", // TODO: уточнить дату
     source: "2ГИС",
-    text: "Огромное спасибо доктору Молдир Кайратовне и всей клинике Genius! Все врачи — настоящие профессионалы, кабинеты чистые, персонал очень внимательный.",
-  },
-  {
-    name: "Сауле Божагул",
-    rating: 5,
-    date: "2026", // TODO: уточнить дату
-    source: "2ГИС",
-    text: "Бесконечная благодарность за имплантацию — работу выполнял Данияр, результат оценю на 10 из 10.",
+    text: "Огромное спасибо доктору Молдир и всей клинике Genius! Все врачи — настоящие профессионалы, кабинеты чистые, персонал очень внимательный.",
   },
   {
     name: "Перизат Жаксылыкова",
@@ -323,7 +382,7 @@ export const reviews: Review[] = [
     rating: 5,
     date: "2026", // TODO: уточнить дату
     source: "2ГИС",
-    text: "Мой ортодонт — Диляра Назарбекова. Обожаю её работу, настоящий профессионал своего дела.",
+    text: "Мой ортодонт — Диляра Тимергалиева. Обожаю её работу, настоящий профессионал своего дела.",
   },
   {
     name: "Айсана Торебек",
@@ -334,69 +393,129 @@ export const reviews: Review[] = [
   },
 ];
 
-export type PricingCategory = {
-  category: string;
-  items: { name: string; price: number }[];
+export type PriceItem = {
+  name: LocalizedText;
+  price: number;
+  priceTo?: number;
+  /** "от X" без верхней границы, когда verhняя цена не указана. */
+  openEnded?: boolean;
 };
 
+export type PricingCategory = {
+  category: LocalizedText;
+  highlighted?: boolean;
+  items: PriceItem[];
+};
+
+// Актуальный прайс клиники (заменён целиком — см. договорённость).
 export const pricing: PricingCategory[] = [
   {
-    category: "Терапия",
+    category: { ru: "Терапия", kk: "Терапия" },
     items: [
-      { name: "Лечение кариеса", price: 6500 }, // TODO
-      { name: "Лечение пульпита (1 канал)", price: 9500 }, // TODO
-      { name: "Пломба светового отверждения", price: 4500 }, // TODO
+      { name: { ru: "Лечение кариеса", kk: "Кариесті емдеу" }, price: 25000, priceTo: 35000 },
+      { name: { ru: "Лечение пульпита", kk: "Пульпитті емдеу" }, price: 50000, priceTo: 90000 },
+      { name: { ru: "Лечение периодонтита", kk: "Периодонтитті емдеу" }, price: 70000, priceTo: 100000 },
+      { name: { ru: "Лечение под микроскопом", kk: "Микроскоппен емдеу" }, price: 90000, priceTo: 120000 },
     ],
   },
   {
-    category: "Гигиена",
+    category: { ru: "Хирургия", kk: "Хирургия" },
     items: [
-      { name: "Комплексная гигиена полости рта", price: 4900 }, // TODO
-      { name: "Air Flow", price: 3500 }, // TODO
-      { name: "Фторирование", price: 2000 }, // TODO
+      { name: { ru: "Удаление (простое)", kk: "Жұлу (қарапайым)" }, price: 10000, priceTo: 20000 },
+      { name: { ru: "Удаление (сложное)", kk: "Жұлу (күрделі)" }, price: 20000, priceTo: 36000 },
+      { name: { ru: "Удаление зуба мудрости", kk: "Ақыл тісін жұлу" }, price: 25000, priceTo: 54000 },
     ],
   },
   {
-    category: "Ортопедия",
+    category: { ru: "Ортопедия", kk: "Ортопедия" },
     items: [
-      { name: "Коронка керамическая", price: 25000 }, // TODO
-      { name: "Винир", price: 28000 }, // TODO
-      { name: "Имплантация под ключ", price: 45000 }, // TODO
+      { name: { ru: "Металлокерамическая коронка", kk: "Металлокерамикалық коронка" }, price: 60000 },
+      { name: { ru: "Безметалловая циркониевая коронка", kk: "Металлсыз цирконий коронкасы" }, price: 100000 },
+      {
+        name: { ru: "Безметалловая циркониевая коронка на импланте", kk: "Имплантқа орнатылған металлсыз цирконий коронкасы" },
+        price: 120000,
+      },
+      { name: { ru: "Съёмный протез", kk: "Алынбалы протез" }, price: 70000 },
+      { name: { ru: "Термобюгельный протез", kk: "Термобюгельді протез" }, price: 150000 },
     ],
   },
   {
-    category: "Ортодонтия",
+    category: { ru: "Ортодонтия", kk: "Ортодонтия" },
     items: [
-      { name: "Брекет-система (металл)", price: 65000 }, // TODO
-      { name: "Элайнеры (курс)", price: 120000 }, // TODO
-      { name: "Консультация ортодонта", price: 1500 }, // TODO
+      { name: { ru: "Металлические брекеты (одна челюсть)", kk: "Металл брекеттер (бір жақ)" }, price: 120000 },
+      {
+        name: { ru: "Самолигирующие брекеты H4 USA (одна челюсть)", kk: "Өзін-өзі лигирлейтін H4 USA брекеттері (бір жақ)" },
+        price: 300000,
+      },
+      { name: { ru: "Элайнеры OrthoLine", kk: "OrthoLine элайнерлері" }, price: 1050000 },
+      { name: { ru: "Элайнеры Klesmile", kk: "Klesmile элайнерлері" }, price: 700000 },
+      { name: { ru: "Aligners Angel (одна челюсть)", kk: "Angel элайнерлері (бір жақ)" }, price: 1200000 },
+    ],
+  },
+  {
+    category: { ru: "Имплантация", kk: "Имплантация" },
+    highlighted: true,
+    items: [
+      { name: { ru: "Dentis, Южная Корея", kk: "Dentis, Оңтүстік Корея" }, price: 80000 },
+      { name: { ru: "MegaGen AnyRidge, Южная Корея", kk: "MegaGen AnyRidge, Оңтүстік Корея" }, price: 150000 },
+      { name: { ru: "Neodent, Бразилия", kk: "Neodent, Бразилия" }, price: 180000 },
+      { name: { ru: "Straumann, Швейцария", kk: "Straumann, Швейцария" }, price: 350000 },
+    ],
+  },
+  {
+    category: { ru: "All-on-4", kk: "All-on-4" },
+    items: [
+      { name: { ru: "Временная конструкция", kk: "Уақытша конструкция" }, price: 1000000, priceTo: 1800000 },
+      { name: { ru: "Постоянная конструкция (акриловая)", kk: "Тұрақты конструкция (акрил)" }, price: 600000 },
+      {
+        name: {
+          ru: "Постоянная конструкция (циркониевая коронка на титановой балке)",
+          kk: "Тұрақты конструкция (титан балкасындағы цирконий коронкасы)",
+        },
+        price: 1000000,
+        openEnded: true,
+      },
+    ],
+  },
+  {
+    category: { ru: "All-on-6", kk: "All-on-6" },
+    items: [
+      {
+        name: {
+          ru: "Постоянная конструкция (циркониевая коронка на титановой балке)",
+          kk: "Тұрақты конструкция (титан балкасындағы цирконий коронкасы)",
+        },
+        price: 1200000,
+        openEnded: true,
+      },
+      { name: { ru: "Постоянная конструкция (акриловая)", kk: "Тұрақты конструкция (акрил)" }, price: 600000 },
     ],
   },
 ];
 
 export type CaseItem = {
-  title: string;
-  note: string;
+  title: LocalizedText;
+  note: LocalizedText;
   before: string;
   after: string;
 };
 
 export const cases: CaseItem[] = [
   {
-    title: "Лечение кариеса под микроскопом",
-    note: "Композитная реставрация, 1 визит",
-    before: "/photos/cases/case-filling-before.jpg",
-    after: "/photos/cases/case-filling-after.jpg",
+    title: { ru: "Отбеливание и эстетическая реставрация", kk: "Ағарту және эстетикалық реставрация" },
+    note: { ru: "Фронтальная группа зубов", kk: "Алдыңғы тістер тобы" },
+    before: "/photos/cases/case-whitening-before.jpg",
+    after: "/photos/cases/case-whitening-after.jpg",
   },
   {
-    title: "Керамические виниры",
-    note: "Реставрация фронтальной группы зубов",
-    before: "/photos/cases/case-veneers-before.jpg",
-    after: "/photos/cases/case-veneers-after.jpg",
+    title: { ru: "Комплексная гигиена и эстетика", kk: "Кешенді гигиена және эстетика" },
+    note: { ru: "Результат за несколько визитов", kk: "Бірнеше келу нәтижесі" },
+    before: "/photos/cases/case-hygiene-before.jpg",
+    after: "/photos/cases/case-hygiene-after.jpg",
   },
   {
-    title: "Протезирование коронками",
-    note: "Замена старых металлических коронок",
+    title: { ru: "Протезирование коронками", kk: "Коронкамен протездеу" },
+    note: { ru: "Замена старых металлических коронок", kk: "Ескі металл коронкаларды алмастыру" },
     before: "/photos/cases/case-crowns-before.jpg",
     after: "/photos/cases/case-crowns-after.jpg",
   },

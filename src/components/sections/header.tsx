@@ -5,12 +5,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { navLinks, siteConfig } from "@/lib/site-data";
 import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/button";
 import { PhoneIcon } from "@/components/icons";
-import { openBookingModal } from "@/lib/booking-modal";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { useT, useLanguage } from "@/lib/i18n";
+import { cn } from "@/lib/cn";
+
+function LanguageSwitch() {
+  const { lang, setLang } = useLanguage();
+  return (
+    <div className="flex items-center rounded-full bg-panel-alt p-1 font-ui text-xs font-bold">
+      {(["ru", "kk"] as const).map((code) => (
+        <button
+          key={code}
+          onClick={() => setLang(code)}
+          className={cn(
+            "rounded-full px-2.5 py-1.5 uppercase transition-colors",
+            lang === code ? "bg-ink text-panel" : "text-ink-muted hover:text-ink",
+          )}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { d, tr } = useT();
+  const waUrl = getWhatsAppUrl();
 
   return (
     <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-md">
@@ -34,12 +58,13 @@ export function Header() {
               href={link.href}
               className="font-ui text-lg text-ink-muted transition-colors hover:text-ink"
             >
-              {link.label}
+              {tr(link.label)}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
+          <LanguageSwitch />
           <a
             href={siteConfig.phoneHref}
             className="hidden items-center gap-2 font-numeric text-base font-semibold text-ink transition-colors hover:text-ink/70 xl:flex"
@@ -47,21 +72,24 @@ export function Header() {
             <PhoneIcon className="h-4 w-4" />
             {siteConfig.phone}
           </a>
-          <Button onClick={openBookingModal} size="lg">
-            Записаться на приём
-          </Button>
+          <LinkButton href={waUrl} target="_blank" rel="noopener noreferrer" size="lg">
+            {tr(d.header.book)}
+          </LinkButton>
         </div>
 
-        <button
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 lg:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Открыть меню"
-          aria-expanded={open}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-            {open ? <path d="M5 5 19 19M19 5 5 19" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-          </svg>
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitch />
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={tr(d.header.openMenu)}
+            aria-expanded={open}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              {open ? <path d="M5 5 19 19M19 5 5 19" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
       </Container>
 
       {open && (
@@ -74,7 +102,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-2 py-3 font-ui text-lg text-ink-muted hover:bg-panel-alt hover:text-ink"
               >
-                {link.label}
+                {tr(link.label)}
               </Link>
             ))}
             <a
@@ -85,16 +113,16 @@ export function Header() {
               <PhoneIcon className="h-4 w-4" />
               {siteConfig.phone}
             </a>
-            <Button
+            <LinkButton
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               size="lg"
               className="mt-2 justify-center"
-              onClick={() => {
-                setOpen(false);
-                openBookingModal();
-              }}
+              onClick={() => setOpen(false)}
             >
-              Записаться на приём
-            </Button>
+              {tr(d.header.book)}
+            </LinkButton>
           </Container>
         </div>
       )}

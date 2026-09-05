@@ -6,21 +6,23 @@ import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import { doctorCategoryLabels, doctors, type DoctorCategory } from "@/lib/site-data";
 
 const presentCategories = new Set(doctors.map((d) => d.category));
 
-const tabs: { key: DoctorCategory | "all"; label: string }[] = [
-  { key: "all", label: "Все врачи" },
-  ...(Object.entries(doctorCategoryLabels) as [DoctorCategory, string][])
-    .filter(([key]) => presentCategories.has(key))
-    .map(([key, label]) => ({ key, label })),
-];
-
 export function Doctors() {
   const [active, setActive] = useState<DoctorCategory | "all">("all");
-  const filtered = active === "all" ? doctors : doctors.filter((d) => d.category === active);
+  const { d, tr } = useT();
+  const filtered = active === "all" ? doctors : doctors.filter((doc) => doc.category === active);
   const rowRef = useRef<HTMLDivElement>(null);
+
+  const tabs: { key: DoctorCategory | "all"; label: string }[] = [
+    { key: "all", label: tr(d.doctors.all) },
+    ...(Object.entries(doctorCategoryLabels) as [DoctorCategory, (typeof doctorCategoryLabels)[DoctorCategory]][])
+      .filter(([key]) => presentCategories.has(key))
+      .map(([key, label]) => ({ key, label: tr(label) })),
+  ];
 
   function scrollCards(direction: -1 | 1) {
     const row = rowRef.current;
@@ -38,11 +40,11 @@ export function Doctors() {
     <section id="doctors" className="py-6">
       <Container>
         <Panel className="flex flex-col gap-8">
-          <Eyebrow className="w-fit">Наша команда</Eyebrow>
+          <Eyebrow className="w-fit">{tr(d.doctors.eyebrow)}</Eyebrow>
 
           <div className="flex flex-col gap-6">
             <h2 className="max-w-xs font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
-              Врачи, которым доверяют
+              {tr(d.doctors.heading)}
             </h2>
 
             <div className="flex flex-wrap gap-2">
@@ -87,15 +89,16 @@ export function Doctors() {
                   <div className="flex flex-col gap-4">
                     <PhotoPlaceholder
                       src={doctor.photo}
-                      label={`${doctor.name}, ${doctor.role.toLowerCase()}`}
+                      label={`${doctor.name}, ${tr(doctor.role).toLowerCase()}`}
                       className="aspect-[3/4] w-full rounded-[1.25rem]"
                       rounded="rounded-[1.25rem]"
                     />
                     <div>
                       <h3 className="font-display text-base font-bold">{doctor.name}</h3>
-                      <p className="text-sm text-ink-muted">{doctor.role}</p>
+                      <p className="text-sm text-ink-muted">{tr(doctor.role)}</p>
                       <p className="mt-1 text-xs font-semibold text-ink-muted">
-                        Опыт <span className="font-numeric">{doctor.experienceYears}</span> лет
+                        {tr(d.common.experience)}{" "}
+                        <span className="font-numeric">{doctor.experienceYears}</span> {tr(d.common.years)}
                       </p>
                     </div>
                   </div>

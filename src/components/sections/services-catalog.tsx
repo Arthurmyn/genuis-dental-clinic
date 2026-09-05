@@ -7,18 +7,20 @@ import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ServiceCard } from "@/components/service-card";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import { serviceCategoryLabels, services, type ServiceCategory } from "@/lib/site-data";
-
-const tabs: { key: ServiceCategory | "all"; label: string }[] = [
-  { key: "all", label: "Все услуги" },
-  ...(Object.entries(serviceCategoryLabels) as [ServiceCategory, string][]).map(
-    ([key, label]) => ({ key, label }),
-  ),
-];
 
 export function ServicesCatalog() {
   const [active, setActive] = useState<ServiceCategory | "all">("all");
+  const { d, tr } = useT();
   const filtered = active === "all" ? services : services.filter((s) => s.category === active);
+
+  const tabs: { key: ServiceCategory | "all"; label: string }[] = [
+    { key: "all", label: tr(d.common.allServices) },
+    ...(Object.entries(serviceCategoryLabels) as [ServiceCategory, (typeof serviceCategoryLabels)[ServiceCategory]][]).map(
+      ([key, label]) => ({ key, label: tr(label) }),
+    ),
+  ];
 
   return (
     <Panel className="flex flex-col gap-12">
@@ -39,15 +41,14 @@ export function ServicesCatalog() {
           >
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
-          На главную
+          {tr(d.common.backHome)}
         </Link>
-        <Eyebrow>Каталог услуг</Eyebrow>
+        <Eyebrow>{tr(d.serviceCatalog.eyebrow)}</Eyebrow>
         <h1 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-          Стоматологические услуги для всей семьи
+          {tr(d.serviceCatalog.heading)}
         </h1>
         <p className="max-w-lg text-sm leading-relaxed text-ink-muted">
-          От профилактики до сложной имплантации — полный цикл лечения под одной крышей.
-          Точную стоимость и план лечения врач определит на консультации.
+          {tr(d.serviceCatalog.description)}
         </p>
 
         <div className="flex flex-wrap gap-2">

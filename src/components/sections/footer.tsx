@@ -1,18 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
+import { useT } from "@/lib/i18n";
 import { navLinks, siteConfig } from "@/lib/site-data";
 
-const socialLinks = [
-  { label: "Instagram", href: siteConfig.social.instagram },
-  { label: "WhatsApp", href: siteConfig.social.whatsapp },
-  { label: "Telegram", href: siteConfig.social.telegram },
-  { label: "2ГИС", href: siteConfig.twoGisFirmUrl },
-  { label: "Google Профиль", href: siteConfig.googleBusinessUrl }, // TODO: подставить ссылку на Google Business
-];
-
 export function Footer() {
+  const { d, tr } = useT();
+
+  const socialLinks = [
+    { label: "Instagram", href: siteConfig.social.instagram },
+    { label: "WhatsApp", href: siteConfig.social.whatsapp },
+    { label: "Telegram", href: siteConfig.social.telegram },
+    { label: "2ГИС", href: siteConfig.twoGisFirmUrl },
+    { label: "Google Профиль", href: siteConfig.googleBusinessUrl }, // TODO: подставить ссылку на Google Business
+  ];
+
   return (
     <footer className="py-6">
       <Container>
@@ -28,11 +33,11 @@ export function Footer() {
                   className="h-24 w-24 object-contain"
                 />
               </Link>
-              <p className="text-sm text-ink-muted">{siteConfig.tagline}</p>
+              <p className="text-sm text-ink-muted">{tr(siteConfig.tagline)}</p>
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-sm font-semibold">Навигация</p>
+              <p className="text-sm font-semibold">{tr(d.footer.nav)}</p>
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
@@ -40,14 +45,14 @@ export function Footer() {
                     href={link.href}
                     className="font-ui text-sm text-ink-muted hover:text-ink"
                   >
-                    {link.label}
+                    {tr(link.label)}
                   </Link>
                 ))}
               </nav>
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-sm font-semibold">Контакты</p>
+              <p className="text-sm font-semibold">{tr(d.footer.contacts)}</p>
               <a
                 href={siteConfig.phoneHref}
                 className="font-numeric text-sm text-ink-muted hover:text-ink"
@@ -63,11 +68,11 @@ export function Footer() {
               <a href={`mailto:${siteConfig.email}`} className="text-sm text-ink-muted hover:text-ink">
                 {siteConfig.email}
               </a>
-              <p className="text-sm text-ink-muted">{siteConfig.address}</p>
+              <p className="text-sm text-ink-muted">{tr(siteConfig.address)}</p>
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-sm font-semibold">Мы в соцсетях</p>
+              <p className="text-sm font-semibold">{tr(d.footer.social)}</p>
               <div className="flex flex-col gap-2">
                 {socialLinks.map((link) => (
                   <a
@@ -86,10 +91,10 @@ export function Footer() {
             <p>{siteConfig.license}</p>
             <p>{siteConfig.requisites}</p>
             <p>
-              © {new Date().getFullYear()} {siteConfig.name}. Все права защищены.
+              © {new Date().getFullYear()} {siteConfig.name}. {tr(d.footer.rightsReserved)}
             </p>
             <p>
-              Создано разработчиком{" "}
+              {tr(d.footer.credit)}{" "}
               <a href="mailto:dzartur34@gmail.com" className="font-semibold text-ink hover:underline">
                 Артуром Джаксыгалиевым
               </a>

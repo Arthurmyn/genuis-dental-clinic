@@ -1,10 +1,14 @@
+"use client";
+
 import { BookingTrigger } from "@/components/ui/booking-trigger";
 import { serviceIcons, CheckIcon, ArrowUpRightIcon } from "@/components/icons";
 import { cn } from "@/lib/cn";
+import { useT } from "@/lib/i18n";
 import type { Service } from "@/lib/site-data";
 
 export function ServiceCard({ service, badgeClassName }: { service: Service; badgeClassName?: string }) {
   const Icon = serviceIcons[service.icon];
+  const { d, tr } = useT();
 
   return (
     <div className="flex h-full min-w-0 flex-col gap-5 rounded-[1.5rem] bg-panel-alt p-6">
@@ -19,23 +23,23 @@ export function ServiceCard({ service, badgeClassName }: { service: Service; bad
 
       <div className="flex flex-col gap-1.5">
         <h3 className="break-words font-display text-base font-bold leading-snug">
-          {service.title}
+          {tr(service.title)}
         </h3>
-        <p className="text-sm leading-relaxed text-ink-muted">{service.description}</p>
+        <p className="text-sm leading-relaxed text-ink-muted">{tr(service.description)}</p>
       </div>
 
       <ul className="flex flex-col gap-2">
         {service.items.map((item) => (
-          <li key={item} className="flex items-center gap-2 text-sm text-ink-muted">
+          <li key={item.ru} className="flex items-center gap-2 text-sm text-ink-muted">
             <CheckIcon className="h-4 w-4 shrink-0 text-ink" />
-            {item}
+            {tr(item)}
           </li>
         ))}
       </ul>
 
       <div className="mt-auto pt-2">
         <BookingTrigger className="group inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 font-ui text-xs font-bold text-panel transition-colors hover:bg-ink/85">
-          Записаться
+          {tr(d.common.book2)}
           <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />
         </BookingTrigger>
       </div>

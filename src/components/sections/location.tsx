@@ -1,16 +1,21 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Eyebrow } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ArrowUpRightIcon, ClockIcon, PhoneIcon, PinIcon } from "@/components/icons";
+import { useT } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site-data";
 
 export function Location() {
+  const { d, tr } = useT();
+
   return (
     <section id="contacts" className="py-6">
       <Container>
         <Panel className="flex flex-col gap-12">
-          <Eyebrow>Контакты</Eyebrow>
+          <Eyebrow>{tr(d.contacts.eyebrow)}</Eyebrow>
 
           <div className="grid gap-6 overflow-hidden rounded-[1.5rem] bg-panel-alt lg:grid-cols-[1.1fr_1fr]">
             <Reveal className="h-80 lg:h-auto">
@@ -29,8 +34,8 @@ export function Location() {
                   <PinIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold">Адрес</p>
-                  <p className="text-sm text-ink-muted">{siteConfig.address}</p>
+                  <p className="text-sm font-semibold">{tr(d.contacts.address)}</p>
+                  <p className="text-sm text-ink-muted">{tr(siteConfig.address)}</p>
                 </div>
               </div>
 
@@ -39,9 +44,9 @@ export function Location() {
                   <ClockIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold">Часы работы</p>
+                  <p className="text-sm font-semibold">{tr(d.contacts.workHours)}</p>
                   <p className="text-sm text-ink-muted">
-                    Пн – Пт: {siteConfig.workHoursWeekdays} · Сб, Вс: {siteConfig.workHoursWeekend}
+                    {tr(d.hero.weekdays)}: {siteConfig.workHoursWeekdays} · {tr(d.hero.weekend)}: {siteConfig.workHoursWeekend}
                   </p>
                 </div>
               </div>
@@ -51,7 +56,7 @@ export function Location() {
                   <PhoneIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold">Телефон</p>
+                  <p className="text-sm font-semibold">{tr(d.contacts.phone)}</p>
                   <a
                     href={siteConfig.phoneHref}
                     className="font-numeric text-sm text-ink-muted hover:text-ink"
@@ -68,7 +73,7 @@ export function Location() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 font-ui text-sm font-bold text-panel transition-colors hover:bg-ink/85"
                 >
-                  Построить маршрут в 2ГИС
+                  {tr(d.contacts.route)}
                   <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:rotate-45" />
                 </a>
                 <a
@@ -77,7 +82,7 @@ export function Location() {
                   rel="noopener noreferrer"
                   className="text-sm font-semibold text-ink underline underline-offset-4"
                 >
-                  Профиль на 2ГИС
+                  {tr(d.contacts.profile)}
                 </a>
               </div>
             </Reveal>

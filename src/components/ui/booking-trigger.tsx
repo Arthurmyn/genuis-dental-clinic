@@ -1,21 +1,13 @@
-"use client";
+import type { AnchorHTMLAttributes } from "react";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
-import type { ButtonHTMLAttributes } from "react";
-import { openBookingModal } from "@/lib/booking-modal";
-
+// A "Записаться" call-to-action that opens a WhatsApp chat with the
+// clinic, prefilled with a booking message, instead of an in-page form.
 export function BookingTrigger({
-  onClick,
-  type = "button",
+  href,
+  target = "_blank",
+  rel = "noopener noreferrer",
   ...props
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
-  return (
-    <button
-      type={type}
-      onClick={(event) => {
-        openBookingModal();
-        onClick?.(event);
-      }}
-      {...props}
-    />
-  );
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return <a href={href ?? getWhatsAppUrl()} target={target} rel={rel} {...props} />;
 }
