@@ -119,12 +119,12 @@ export function Doctors() {
             </button>
           </div>
 
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] sm:aspect-[21/9]">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] sm:aspect-[21/9] lg:mx-14 lg:w-[calc(100%-7rem)]">
             <Image
               src={teamPhoto}
               alt={tr(d.doctors.heading)}
               fill
-              sizes="(min-width: 1024px) 90vw, 100vw"
+              sizes="(min-width: 1024px) 80vw, 100vw"
               className="object-cover"
             />
           </div>

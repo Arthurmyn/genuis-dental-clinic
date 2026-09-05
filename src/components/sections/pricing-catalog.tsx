@@ -75,7 +75,12 @@ export function PricingCatalog() {
                   category.highlighted && "lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-4",
                 )}
               >
-                <div className="flex items-start justify-between gap-4">
+                <div
+                  className={cn(
+                    "flex items-start justify-between gap-4",
+                    category.highlighted && "lg:col-span-2",
+                  )}
+                >
                   <h2 className="font-display text-lg font-bold sm:text-xl">
                     {tr(category.category)}
                   </h2>

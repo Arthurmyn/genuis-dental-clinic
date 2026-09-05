@@ -303,24 +303,31 @@ export type Doctor = {
 // мок-значением на время запуска, стоит уточнить и заменить.
 export const doctors: Doctor[] = [
   {
-    name: "Наушарипов Нурбек",
-    role: { ru: "Стоматолог-терапевт", kk: "Терапевт-стоматолог" }, // TODO: уточнить специализацию
+    name: "Данияр Рахманов",
+    role: { ru: "Хирург-имплантолог", kk: "Хирург-имплантолог" },
+    category: "surgeons",
+    experienceYears: 8,
+    photo: "/photos/doctors/daniyar.jpg",
+  },
+  {
+    name: "Нурбек Маратович",
+    role: { ru: "Стоматолог-терапевт", kk: "Терапевт-стоматолог" },
     category: "therapists",
-    experienceYears: 10, // TODO: уточнить стаж
+    experienceYears: 10,
     photo: "/photos/doctors/nurbek.jpg",
   },
   {
-    name: "Садыков Султан",
+    name: "Султан Набижанович",
     role: { ru: "Хирург-имплантолог", kk: "Хирург-имплантолог" },
     category: "surgeons",
-    experienceYears: 9, // TODO: уточнить стаж
+    experienceYears: 9,
     photo: "/photos/doctors/sultan.jpg",
   },
   {
-    name: "Тимергалиева Диляра",
-    role: { ru: "Ортодонт", kk: "Ортодонт" }, // подтверждено отзывом на 2ГИС
+    name: "Диляра Назарбекова",
+    role: { ru: "Ортодонт", kk: "Ортодонт" },
     category: "orthodontists",
-    experienceYears: 7, // TODO: уточнить стаж
+    experienceYears: 7,
     photo: "/photos/doctors/dilyara.jpg",
   },
   {
@@ -335,13 +342,13 @@ export const doctors: Doctor[] = [
     role: { ru: "Стоматолог-хирург", kk: "Хирург-стоматолог" }, // TODO: уточнить специализацию
     category: "surgeons",
     experienceYears: 5, // TODO: уточнить стаж
-    photo: "/photos/doctors/aslan.jpg",
+    // Фото добавят позже — до тех пор карточка показывает плейсхолдер.
   },
   {
-    name: "Саттар Нурсултан",
-    role: { ru: "Врач-эндодонтист", kk: "Дәрігер-эндодонтист" }, // TODO: уточнить специализацию
+    name: "Нурсултан Аскарович",
+    role: { ru: "Врач-эндодонтист", kk: "Дәрігер-эндодонтист" },
     category: "therapists",
-    experienceYears: 7, // TODO: уточнить стаж
+    experienceYears: 7,
     photo: "/photos/doctors/nursultan.jpg",
   },
 ];
@@ -389,7 +396,7 @@ export const reviews: Review[] = [
     rating: 5,
     date: "2026", // TODO: уточнить дату
     source: "2ГИС",
-    text: "Мой ортодонт - Диляра Тимергалиева. Обожаю её работу, настоящий профессионал своего дела.",
+    text: "Мой ортодонт - Диляра Назарбекова. Обожаю её работу, настоящий профессионал своего дела.",
   },
   {
     name: "Айсана Торебек",
@@ -423,6 +430,16 @@ export type PricingCategory = {
 
 // Актуальный прайс клиники (заменён целиком — см. договорённость).
 export const pricing: PricingCategory[] = [
+  {
+    category: { ru: "Имплантация", kk: "Имплантация" },
+    highlighted: true,
+    items: [
+      { name: { ru: "Dentis, Южная Корея", kk: "Dentis, Оңтүстік Корея" }, price: 80000 },
+      { name: { ru: "MegaGen AnyRidge, Южная Корея", kk: "MegaGen AnyRidge, Оңтүстік Корея" }, price: 150000 },
+      { name: { ru: "Neodent, Бразилия", kk: "Neodent, Бразилия" }, price: 180000 },
+      { name: { ru: "Straumann, Швейцария", kk: "Straumann, Швейцария" }, price: 350000 },
+    ],
+  },
   {
     category: { ru: "Терапия", kk: "Терапия" },
     items: [
@@ -464,16 +481,6 @@ export const pricing: PricingCategory[] = [
       { name: { ru: "Элайнеры OrthoLine", kk: "OrthoLine элайнерлері" }, price: 1050000 },
       { name: { ru: "Элайнеры Klesmile", kk: "Klesmile элайнерлері" }, price: 700000 },
       { name: { ru: "Aligners Angel (одна челюсть)", kk: "Angel элайнерлері (бір жақ)" }, price: 1200000 },
-    ],
-  },
-  {
-    category: { ru: "Имплантация", kk: "Имплантация" },
-    highlighted: true,
-    items: [
-      { name: { ru: "Dentis, Южная Корея", kk: "Dentis, Оңтүстік Корея" }, price: 80000 },
-      { name: { ru: "MegaGen AnyRidge, Южная Корея", kk: "MegaGen AnyRidge, Оңтүстік Корея" }, price: 150000 },
-      { name: { ru: "Neodent, Бразилия", kk: "Neodent, Бразилия" }, price: 180000 },
-      { name: { ru: "Straumann, Швейцария", kk: "Straumann, Швейцария" }, price: 350000 },
     ],
   },
   {
