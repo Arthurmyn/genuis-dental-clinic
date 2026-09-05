@@ -1,17 +1,19 @@
 import type { Lang } from "@/lib/i18n";
 import type { PriceItem } from "@/lib/site-data";
 
-const FROM_WORD: Record<Lang, string> = { ru: "от", kk: "бастап" };
-const TO_WORD: Record<Lang, string> = { ru: "до", kk: "дейін" };
-
 export function formatPrice(item: PriceItem, lang: Lang): string {
   const price = item.price.toLocaleString("ru-RU");
+
   if (item.priceTo) {
     const priceTo = item.priceTo.toLocaleString("ru-RU");
-    return `${FROM_WORD[lang]} ${price} ${TO_WORD[lang]} ${priceTo} ₸`;
+    // Kazakh word order puts "бастап"/"дейін" after the number they modify
+    // ("X ₸ бастап Y ₸ дейін"), unlike the Russian calque "от X до Y ₸".
+    return lang === "kk"
+      ? `${price} ₸ бастап ${priceTo} ₸ дейін`
+      : `от ${price} до ${priceTo} ₸`;
   }
   if (item.openEnded) {
-    return `${FROM_WORD[lang]} ${price} ₸`;
+    return lang === "kk" ? `${price} ₸ бастап` : `от ${price} ₸`;
   }
   return `${price} ₸`;
 }
