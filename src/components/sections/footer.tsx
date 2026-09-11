@@ -65,9 +65,6 @@ export function Footer() {
               >
                 {siteConfig.phoneSecondary}
               </a>
-              <a href={`mailto:${siteConfig.email}`} className="text-sm text-ink-muted hover:text-ink">
-                {siteConfig.email}
-              </a>
               <p className="text-sm text-ink-muted">{tr(siteConfig.address)}</p>
             </div>
 

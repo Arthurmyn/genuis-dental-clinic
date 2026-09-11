@@ -18,7 +18,6 @@ export const siteConfig = {
   phoneHref: "tel:+77755077763",
   phoneSecondary: "+7 700 434 95 54",
   phoneSecondaryHref: "tel:+77004349554",
-  email: "info@genius-stom.kz", // TODO: подтвердить адрес почты
   address: {
     ru: "Казахстан, г. Астана, ул. Толе би, 55",
     kk: "Қазақстан, Астана қаласы, Төле би көшесі, 55",
