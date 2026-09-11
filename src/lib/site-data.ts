@@ -340,13 +340,6 @@ export const doctors: Doctor[] = [
     photo: "/photos/doctors/moldir.jpg",
   },
   {
-    name: "Кикашев Аслан",
-    role: { ru: "Стоматолог-хирург", kk: "Хирург-стоматолог" }, // TODO: уточнить специализацию
-    category: "surgeons",
-    experienceYears: 5, // TODO: уточнить стаж
-    // Фото добавят позже — до тех пор карточка показывает плейсхолдер.
-  },
-  {
     name: "Нурсултан Аскарович",
     role: { ru: "Врач-эндодонтист", kk: "Дәрігер-эндодонтист" },
     category: "therapists",
