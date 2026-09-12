@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope, PT_Sans, Space_Grotesk } from "next/font/google";
 import { siteConfig } from "@/lib/site-data";
 import { StructuredData } from "@/components/structured-data";
+import { BookingPopup } from "@/components/ui/booking-popup";
 import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
 
@@ -96,7 +97,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col overflow-x-hidden bg-page font-sans text-ink">
         <StructuredData />
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <BookingPopup />
+        </LanguageProvider>
       </body>
     </html>
   );
